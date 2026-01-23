@@ -11,6 +11,7 @@
       background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9uZG8lMjByb21hbnRpY298ZW58MHx8MHx8fDA%3D') no-repeat center center fixed;
       background-size: cover;
       color: #5c3d4f;
+      overflow-x: hidden;
     }
     .container {
       max-width: 1200px;
@@ -20,6 +21,8 @@
       border-radius: 15px;
       margin-top: 20px; 
       margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
     }
     header {
       background-image: url('https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW1vcnxlbnwwfHwwfHx8MA%3D%3D');
@@ -32,6 +35,8 @@
       align-items: center;
       text-align: center;
       color: white;
+      position: relative;
+      z-index: 2;
     }
     header h1 {
       background-color: rgba(0, 0, 0, 0.5);
@@ -40,212 +45,148 @@
       font-size: 2em;
       margin: 0 10px;
     }
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 40px 0;
-    }
-    .foto {
-      text-align: center;
-    }
-    .foto img {
-      width: 100%;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-    .foto img:hover {
-      transform: scale(1.02);
-    }
-    .foto p {
-      margin-top: 5px;
-      font-size: 0.9em;
-      color: #87465b;
-    }
-    .carta-preview {
-      background-color: #fff1f6;
-      padding: 30px;
-      margin-top: 30px;
-      border-left: 5px solid #cc3366;
-      border-radius: 10px;
-      font-style: italic;
-    }
-    .leer-mas {
-      background-color: #cc3366;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 15px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background-color 0.3s;
-    }
-    .leer-mas:hover {
-      background-color: #a02850;
-    }
-    .oculto {
-      display: none;
-    }
-    .promesas, .playlist, .frases, .historia, .detalles, .razones, .cartas-emocionales, .mapa-amor, .audio-mensaje, .video-section {
+    
+    /* SECCIONES GENERALES */
+    section {
       margin-top: 40px;
       padding: 20px;
       background-color: #ffe6f0;
       border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-    .promesas ul, .frases ul, .historia ul, .detalles ul, .razones ul {
-      list-style-type: none;
-      padding-left: 20px;
-    }
+
+    /* ESTILOS COMUNES */
+    .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .foto { text-align: center; }
+    .foto img { width: 100%; border-radius: 10px; transition: transform 0.3s ease; }
+    .foto img:hover { transform: scale(1.02); }
+    .foto p { margin-top: 5px; font-size: 0.9em; color: #87465b; }
+
+    .carta-preview { background-color: #fff1f6; padding: 30px; margin-top: 30px; border-left: 5px solid #cc3366; border-radius: 10px; font-style: italic; }
+    
+    .leer-mas, .cartas-grid button { background-color: #cc3366; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin-top: 15px; cursor: pointer; font-size: 1em; transition: background-color 0.3s; }
+    .leer-mas:hover, .cartas-grid button:hover { background-color: #a02850; }
+
+    .oculto { display: none; }
+    ul { list-style-type: none; padding-left: 20px; }
     .frases ul li::before { content: "💌 "; }
     .promesas ul li::before { content: "❤️ "; }
     .detalles ul li::before { content: "💗 "; }
     .razones ul li::before { content: "🌹 "; }
-    .historia ul li {
-      margin-bottom: 10px;
-      font-size: 1.1em;
-    }
-    .cartas-grid {
+    .historia ul li { margin-bottom: 10px; font-size: 1.1em; }
+
+    .cartas-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .cartas-grid button { flex: 1 1 200px; }
+    .carta-emocional { background-color: white; padding: 15px; border-left: 4px solid #cc3366; border-radius: 8px; font-style: italic; display: none; margin-top: 15px; }
+
+    /* ESTILOS VIDEO */
+    .video-section h2 { text-align: center; color: #cc3366; margin-bottom: 20px; font-size: 2em; }
+    .video-container { position: relative; width: 100%; max-width: 400px; margin: 0 auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); overflow: hidden; background-color: black; display: flex; justify-content: center; align-items: center; min-height: 300px; }
+    .video-container video { width: 100%; height: auto; display: block; }
+    .video-description { margin-top: 30px; text-align: center; font-style: italic; line-height: 1.8; color: #5c3d4f; font-size: 1.1em; white-space: pre-line; }
+    .video-error-msg { color: white; padding: 20px; text-align: center; display: none; }
+
+    /* --- NUEVOS ESTILOS ESPECÍFICOS --- */
+
+    /* 1. ENSEÑANZAS (Tarjetas) */
+    .enseñanzas h2 { text-align: center; color: #cc3366; margin-bottom: 20px; }
+    .grid-tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+    .tarjeta { background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #cc3366; box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-size: 0.95em; color: #555; }
+    .tarjeta:hover { transform: translateX(5px); transition: transform 0.2s; }
+
+    /* 2. NOTAS SECRETAS (Post-its) */
+    .notas-secretas h2 { text-align: center; color: #cc3366; }
+    .notas-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px 0; }
+    .nota {
+      background-color: #fff9c4;
+      color: #333;
+      padding: 20px;
+      width: 200px;
+      min-height: 180px;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .cartas-grid button {
-      flex: 1 1 200px;
-      padding: 10px;
-      background-color: #cc3366;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .cartas-grid button:hover {
-      background-color: #a02850;
-    }
-    .carta-emocional {
-      background-color: white;
-      padding: 15px;
-      border-left: 4px solid #cc3366;
-      border-radius: 8px;
-      font-style: italic;
-      display: none;
-      margin-top: 15px;
-    }
-    /* Estilos mejorados para la sección de video */
-    .video-section h2 {
-      text-align: center;
-      color: #cc3366;
-      margin-bottom: 20px;
-      font-size: 2em;
-    }
-    .video-container {
-      position: relative;
-      width: 100%;
-      max-width: 400px; 
-      margin: 0 auto;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      overflow: hidden;
-      background-color: black;
-      display: flex;
-      justify-content: center;
       align-items: center;
-      min-height: 300px;
+      justify-content: center;
+      text-align: center;
+      transition: transform 0.3s, z-index 0.3s;
+      position: relative;
     }
-    .video-container video {
-      width: 100%;
-      height: auto;
-      display: block;
+    .nota:nth-child(odd) { transform: rotate(-2deg); background-color: #fff59d; }
+    .nota:nth-child(even) { transform: rotate(2deg); background-color: #e6ee9c; }
+    .nota:hover { transform: scale(1.1) rotate(0deg); z-index: 10; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); }
+    /* Pin effect */
+    .nota::after { content: ''; position: absolute; top: -10px; left: 50%; width: 10px; height: 10px; background: rgba(0,0,0,0.1); border-radius: 50%; }
+
+    /* 3. DESEOS (Cielo) */
+    .deseos-futuro { background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); color: white; }
+    .deseos-futuro h2 { text-align: center; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+    .cielo-nocturno { padding: 20px; text-align: center; min-height: 400px; display: flex; flex-direction: column; justify-content: space-between; }
+    .contenedor-estrellas { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .estrella { cursor: pointer; font-size: 1.5em; transition: all 0.3s; opacity: 0.7; }
+    .estrella:hover { color: #ffd700; transform: scale(1.4); opacity: 1; text-shadow: 0 0 15px #ffd700; }
+    #deseo-texto { 
+      margin-top: 30px; 
+      min-height: 80px; 
+      font-style: italic; 
+      color: #fff; 
+      font-size: 1.3em; 
+      text-shadow: 1px 1px 2px black;
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .video-description {
-      margin-top: 30px;
-      text-align: center;
-      font-style: italic;
-      line-height: 1.8;
-      color: #5c3d4f;
-      font-size: 1.1em;
-      white-space: pre-line;
-    }
-    
+    /* 4. CIERRE (Globo) */
+    .cierre-final { text-align: center; padding: 60px 20px; background: white; border: 2px solid #ffe6f0; }
     .boton-despedida {
       background-color: #87465b;
       color: white;
       padding: 12px 25px;
       border: none;
       border-radius: 30px;
-      margin-top: 30px;
+      margin-top: 20px;
       cursor: pointer;
       font-size: 1.1em;
       font-family: 'Georgia', serif;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
     }
-    .boton-despedida:hover {
-      background-color: #5c2d3b;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
-    }
+    .boton-despedida:hover { background-color: #5c2d3b; transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0,0,0,0.2); }
     
-    .texto-desgarrador {
-      display: none;
-      margin-top: 30px; 
-      text-align: left;
-      font-style: italic; 
-      color: #4a4a4a; 
-      padding: 25px; 
-      background-color: #fff; 
-      border-left: 6px solid #87465b; 
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      line-height: 1.8;
-    }
-    .texto-desgarrador p {
-      margin-bottom: 15px;
-    }
+    .texto-desgarrador { display: none; margin-top: 30px; text-align: left; font-style: italic; color: #4a4a4a; padding: 25px; background-color: #fff; border-left: 6px solid #87465b; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); line-height: 1.8; }
     
-    .video-error-msg {
-      color: white;
-      padding: 20px;
-      text-align: center;
-      display: none;
-    }
-
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      color: white;
-      background-color: #cc3366;
-      padding: 15px;
-      border-radius: 0 0 15px 15px;
-    }
-    .flores {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background-image: url('https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-hand-painted-flowers-vintage-romantic-background-png-image_4840582.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: left top;
-      opacity: 0.1;
-      z-index: 1;
-    }
-    .hello-kitty {
+    #globo {
+      font-size: 8em;
       position: fixed;
-      bottom: 10px;
-      right: 10px;
-      width: 80px;
-      z-index: 999;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: bottom 6s ease-in-out, opacity 6s ease-in;
+      z-index: 9999;
+      opacity: 1;
+      display: none;
+      pointer-events: none;
     }
-    .container, header {
-      position: relative;
-      z-index: 2;
+    .mensaje-final-adios {
+      display: none;
+      font-size: 1.4em;
+      color: #cc3366;
+      margin-top: 30px;
+      line-height: 1.6;
+      animation: fadeIn 3s;
+      font-weight: bold;
     }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Footer & Decoracion */
+    footer { margin-top: 50px; text-align: center; color: white; background-color: #cc3366; padding: 15px; border-radius: 0 0 15px 15px; }
+    .flores { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background-image: url('https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-hand-painted-flowers-vintage-romantic-background-png-image_4840582.png'); background-size: contain; background-repeat: no-repeat; background-position: left top; opacity: 0.1; z-index: 1; }
+    .hello-kitty { position: fixed; bottom: 10px; right: 10px; width: 80px; z-index: 999; }
   </style>
 </head>
 <body>
@@ -258,6 +199,7 @@
 
   <div class="container">
     
+    <!-- CARTA PRINCIPAL -->
     <section class="carta-preview">
       <p style="font-size: 1.1em; font-weight: bold; color: #87465b;">Para Ileana Vega, la mujer que amo y seguiré eligiendo cada día...</p>
       <p>Hoy quiero hablarte desde lo más profundo de mi corazón, con la verdad por delante...</p>
@@ -266,11 +208,8 @@
       
       <div id="carta-completa-principal" class="oculto" style="margin-top: 20px; line-height: 1.8; color: #4a4a4a;">
         <p>Han pasado 17 años desde que un “sí” cambió nuestras vidas. Compartimos risas, sueños y la bendición de nuestros hijos: Andree, Samadhi, Eileen y Kai. Tú siempre fuiste el centro de mi mundo.</p>
-
         <p><strong>Hoy te pido perdón.</strong> Perdón por no haber sido el hombre que soñaste, por haber dañado tu corazón y por el dolor que te causé. Reconozco que mis acciones te hirieron y es algo que me pesa en el alma.</p>
-
         <p>Quiero que sepas que estoy enfrentando mi batalla más difícil: <strong>estoy luchando contra mi alcoholismo.</strong> Lo hago porque te respeto y porque no quiero que sigas sufriendo por mi culpa. Te mereces la paz que yo no supe darte.</p>
-
         <p>Si algún día la vida decide que nuestros caminos del amor se vuelvan a cruzar, quiero que sepas que siempre, <em>siempre</em> estaré aquí para ti. Gracias por todo. Que estas palabras y mi voz sean el testimonio de mi arrepentimiento y de mi amor eterno.</p>
 
         <div style="margin-top: 25px; padding: 15px; background-color: white; border-radius: 8px; text-align: center; border: 1px inset #fce4ec;">
@@ -285,6 +224,7 @@
       </div>
     </section>
 
+    <!-- GALERIA -->
     <section class="galeria">
       <div class="foto"><img src="img/1.jpg" alt="Foto 1"><p>Tu sonrisa es mi lugar feliz.</p></div>
       <div class="foto"><img src="img/2.jpg" alt="Foto 2"><p>Cuando me amabas.</p></div>
@@ -325,6 +265,56 @@
       </ul>
     </section>
 
+    <!-- NUEVA SECCION 1: LO QUE ME ENSEÑASTE -->
+    <section class="enseñanzas">
+      <h2>🌱 Lo que floreció en mí gracias a ti</h2>
+      <div class="grid-tarjetas">
+        <div class="tarjeta"><p>De ti aprendí que la paciencia también es una forma de amar.</p></div>
+        <div class="tarjeta"><p>Contigo entendí que el amor se demuestra en lo cotidiano, no solo en los grandes momentos.</p></div>
+        <div class="tarjeta"><p>Aprendí que cuidar a alguien también es cuidarse a uno mismo.</p></div>
+        <div class="tarjeta"><p>Me enseñaste a escuchar, incluso cuando no entendía.</p></div>
+        <div class="tarjeta"><p>Gracias a ti supe lo que es amar sin condiciones.</p></div>
+        <div class="tarjeta"><p>Aprendí que no todo lo que termina fracasa.</p></div>
+        <div class="tarjeta"><p>Me enseñaste que la vulnerabilidad no es debilidad.</p></div>
+        <div class="tarjeta"><p>Contigo entendí que el hogar no es un lugar, es una persona.</p></div>
+        <div class="tarjeta"><p>Me enseñaste que el amor también se construye en el cansancio.</p></div>
+        <div class="tarjeta"><p>Aprendí que pedir perdón es un acto de valentía.</p></div>
+        <div class="tarjeta"><p>Gracias a ti descubrí que merezco sanar, aunque duela el proceso.</p></div>
+        <div class="tarjeta"><p>Me enseñaste que el tiempo compartido vale más que cualquier promesa.</p></div>
+        <div class="tarjeta"><p>Contigo aprendí a amar incluso en medio del caos.</p></div>
+        <div class="tarjeta"><p>Me enseñaste que los recuerdos también sostienen cuando ya no queda nada más.</p></div>
+        <div class="tarjeta"><p>Aprendí que amar no siempre significa quedarse.</p></div>
+        <div class="tarjeta"><p>Gracias a ti entendí que crecer también implica soltar.</p></div>
+        <div class="tarjeta"><p>Me enseñaste que la risa puede salvar días enteros.</p></div>
+        <div class="tarjeta"><p>Contigo supe lo que es construir una vida desde cero.</p></div>
+        <div class="tarjeta"><p>Me enseñaste que algunas personas llegan para cambiarte, no para quedarse.</p></div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCION 3: COSAS QUE NUNCA TE DIJE -->
+    <section class="notas-secretas">
+      <h2>📝 Cosas que nunca te dije...</h2>
+      <div class="notas-grid">
+        <div class="nota">Nunca te dije que muchas veces fui fuerte solo para no preocuparte.</div>
+        <div class="nota">Nunca te dije que me daba miedo perderte incluso cuando aún estabas conmigo.</div>
+        <div class="nota">Nunca te dije que aprendí a callar cosas por no hacerte sentir mal.</div>
+        <div class="nota">Nunca te dije que algunas noches me sentí solo, aun estando a tu lado.</div>
+        <div class="nota">Nunca te dije que te admiraba más de lo que expresé.</div>
+        <div class="nota">Nunca te dije que a veces no sabía cómo amar mejor.</div>
+        <div class="nota">Nunca te dije que tus silencios también me dolían.</div>
+        <div class="nota">Nunca te dije que había días en los que quería rendirme, pero no contigo.</div>
+        <div class="nota">Nunca te dije que me sentí insuficiente más veces de las que imaginas.</div>
+        <div class="nota">Nunca te dije que guardé palabras por miedo a perderte.</div>
+        <div class="nota">Nunca te dije que tu ausencia empezó a doler antes de que te fueras.</div>
+        <div class="nota">Nunca te dije que también necesitaba que me cuidaran.</div>
+        <div class="nota">Nunca te dije que muchas veces quise pedir ayuda y no supe cómo.</div>
+        <div class="nota">Nunca te dije que aun en lo malo, seguía eligiéndote.</div>
+        <div class="nota">Nunca te dije que aprendí a sonreír cuando por dentro estaba cansado.</div>
+        <div class="nota">Nunca te dije que me dolía no saber qué estaba pasando por tu mente.</div>
+        <div class="nota">Nunca te dije que el amor también me dio miedo.</div>
+      </div>
+    </section>
+
     <section class="cartas-emocionales">
       <h2>Abrir cuando...</h2>
       <div class="cartas-grid">
@@ -363,14 +353,7 @@
     <section class="mapa-amor">
       <h2>🗺️ Nuestro Mapa del Amor</h2>
       <p>Cada lugar en este mapa tiene un pedacito de nuestra historia. Desde donde comenzó todo, hasta cada paso que dimos juntos.</p>
-      <iframe 
-        src="https://www.google.com/maps/d/embed?mid=1o1VtTYINzoRRVejkAtGH1NDekKlAub0&ehbc=2E312F" 
-        width="100%" 
-        height="480" 
-        style="border:0; border-radius: 10px;" 
-        allowfullscreen="" 
-        loading="lazy">
-      </iframe>
+      <iframe src="https://www.google.com/maps/d/embed?mid=1o1VtTYINzoRRVejkAtGH1NDekKlAub0&ehbc=2E312F" width="100%" height="480" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
       <p style="margin-top:10px; font-style: italic;">Nuestro mapa de amor… que aún tiene muchos destinos por descubrir ❤️</p>
     </section>
 
@@ -395,54 +378,35 @@
       </audio>
     </section>
 
-    <!-- SECCIÓN DE VIDEO HASTA SIEMPRE -->
     <section class="video-section">
       <h2>Hasta Siempre</h2>
       <div class="video-container">
-        <!-- El video intentará cargarse. Si falla, mostrará el mensaje de error. -->
+        <!-- BUSCANDO VIDEO EN LA CARPETA video/ -->
         <video id="miVideoFinal" controls controlsList="nodownload">
-          <!-- AQUI ESTÁ EL CAMBIO: Ahora busca en la carpeta "video" -->
           <source src="video/video_final.mp4" type="video/mp4">
           Tu navegador no soporta la reproducción de videos.
         </video>
         <div id="mensajeErrorVideo" class="video-error-msg">
           ⚠️ <strong>No se encuentra el video</strong><br><br>
-          Asegúrate de que:<br>
-          1. Creaste una carpeta llamada <strong>video</strong>.<br>
-          2. Dentro metiste el archivo <strong>video_final.mp4</strong>.<br>
-          3. Subiste AMBOS (la carpeta y el archivo) a GitHub.
+          Asegúrate de que la carpeta se llame <strong>video</strong> y el archivo <strong>video_final.mp4</strong>.
         </div>
       </div>
       
       <div class="video-description">
-Fueron más los momentos buenos
-que los días en los que dolió.
+Fueron más los momentos buenos que los días en los que dolió.
+Más las risas que las discusiones, más los abrazos que los silencios.
+No todo fue perfecto, pero fue real.
 
-Más las risas que las discusiones,
-más los abrazos que los silencios.
-No todo fue perfecto,
-pero fue real.
-
-Y lo real deja huella,
-aunque ya no esté.
-Hoy entiendo que no se sigue adelante
-olvidando,
+Y lo real deja huella, aunque ya no esté.
+Hoy entiendo que no se sigue adelante olvidando,
 se sigue recordando lo que valió la pena.
 
-Porque cuando llega la melancolía
-no pienso en el final,
-pienso en todo lo que fuimos
-cuando la vida se sentía viva,
-cuando el mundo no pesaba tanto
-y bastaba con estar juntos.
+Porque cuando llega la melancolía no pienso en el final,
+pienso en todo lo que fuimos cuando la vida se sentía viva,
+cuando el mundo no pesaba tanto y bastaba con estar juntos.
 
-Y aunque ya no estés aquí,
-todo lo bueno que vivimos
-se quedó conmigo.
-
-Eso es lo que más pesa…
-y al mismo tiempo,
-eso es lo que me sostiene.
+Y aunque ya no estés aquí, todo lo bueno que vivimos se quedó conmigo.
+Eso es lo que más pesa… y al mismo tiempo, eso es lo que me sostiene.
       </div>
       
       <div style="text-align: center;">
@@ -456,9 +420,39 @@ eso es lo que me sostiene.
         <p>Si algún día me recuerdas, no quiero que duela. Quiero que sonrías pensando que, por un momento en esta vida, nos elegimos y lo dimos todo como supimos. Yo voy a seguir adelante, no porque deje de quererte, sino porque aprendí a quererte sin tenerte.</p>
         <p>Gracias por lo que fuiste conmigo, por lo que construimos, por lo que soñamos y por lo que, aunque no duró para siempre, sí significó todo. Siempre serás parte de mi historia, y eso nadie lo puede cambiar.</p>
       </div>
-
     </section>
-    <!-- FIN SECCIÓN VIDEO -->
+
+    <!-- NUEVA SECCION 2: DESEOS AL UNIVERSO (Cielo) -->
+    <section class="deseos-futuro">
+      <h2>✨ Mis deseos para tu futuro</h2>
+      <div class="cielo-nocturno">
+        <p style="margin-bottom:20px; font-size:0.9em; color:#ddd;">(Toca las estrellas para ver mis deseos para ti)</p>
+        <div class="contenedor-estrellas">
+            <!-- 20 Estrellas para los 20 deseos -->
+            <span class="estrella" onclick="mostrarDeseo('Deseo que encuentres paz, incluso en los días en que todo pese.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que la vida te regale más sonrisas de las que te quitó.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que nunca dudes de tu valor ni de lo que mereces.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Deseo que te sientas amada, cuidada y elegida.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que sanes todo aquello que alguna vez te dolió en silencio.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que encuentres a alguien que te abrace como necesitas.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Deseo que sigas creciendo sin miedo a empezar de nuevo.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que el futuro te trate con la ternura que das.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que nunca te falte fuerza cuando la necesites.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Deseo que tus sueños encuentren caminos abiertos.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que la risa te acompañe más seguido que la tristeza.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que aprendas a soltar sin culpas ni reproches.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Deseo que te mires con amor y orgullo.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que la vida te sorprenda con momentos simples y verdaderos.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que siempre tengas un lugar seguro al cual volver.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Deseo que el amor te llegue sin heridas del pasado.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que tus días estén llenos de calma y sentido.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que nunca olvides lo fuerte que eres.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Deseo que el tiempo te regale claridad y paz.')">⭐</span>
+            <span class="estrella" onclick="mostrarDeseo('Que seas feliz, incluso si esa felicidad ya no me incluye.')">⭐</span>
+        </div>
+        <div id="deseo-texto">Selecciona una estrella...</div>
+      </div>
+    </section>
 
     <section class="detalles">
       <h2>Detalles que amo de ti</h2>
@@ -489,6 +483,23 @@ eso es lo que me sostiene.
       </ul>
     </section>
 
+    <!-- 4. NUEVA SECCIÓN: CIERRE FINAL (GLOBO) -->
+    <section class="cierre-final">
+      <h2>El último paso...</h2>
+      <p>A veces amar también significa saber soltar para que el otro vuele.</p>
+      <button class="boton-despedida" style="background-color: #5c3d4f;" onclick="soltarGlobo()">Dejarte ir en paz 🎈</button>
+      
+      <div id="mensaje-final-adios" class="mensaje-final-adios">
+        Gracias por todo, Osita. Sé feliz.<br><br>
+        Recuerda que siempre te voy a amar aunque siga peleando con los demonios de mi cabeza.<br>
+        Si algún día los venzo, estaré dispuesto siempre a volver.<br>
+        Y si algún día me vencen... recuérdame siempre en los mejores momentos.
+      </div>
+    </section>
+
+    <!-- GLOBO ANIMADO -->
+    <div id="globo">🎈</div>
+
     <footer>
       Con todo mi amor,<br>
       <span class="firma">David ♥</span><br>
@@ -505,21 +516,44 @@ eso es lo que me sostiene.
       }
     }
 
-    // Script simple para detectar error en el video
+    function mostrarDeseo(texto) {
+      const contenedor = document.getElementById('deseo-texto');
+      contenedor.style.opacity = 0;
+      setTimeout(() => {
+        contenedor.innerText = texto;
+        contenedor.style.opacity = 1;
+      }, 300);
+    }
+
+    function soltarGlobo() {
+      const globo = document.getElementById('globo');
+      const boton = document.querySelector('.cierre-final button');
+      const mensaje = document.getElementById('mensaje-final-adios');
+      
+      // Ocultar botón
+      boton.style.display = 'none';
+      
+      // Mostrar y animar globo
+      globo.style.display = 'block';
+      setTimeout(() => {
+        globo.style.bottom = '120%'; // Se va hasta arriba de la pantalla
+        globo.style.opacity = '0';
+      }, 100);
+
+      // Mostrar mensaje final después de que el globo sube
+      setTimeout(() => {
+        mensaje.style.display = 'block';
+      }, 2500);
+    }
+
+    // Video Error Check
     var video = document.getElementById('miVideoFinal');
     var errorMsg = document.getElementById('mensajeErrorVideo');
     if (video) {
-      video.onerror = function() {
-        video.style.display = 'none';
-        errorMsg.style.display = 'block';
-      };
-      // También verificamos si la fuente falla
+      video.onerror = function() { video.style.display = 'none'; errorMsg.style.display = 'block'; };
       var source = video.querySelector('source');
       if (source) {
-        source.onerror = function() {
-          video.style.display = 'none';
-          errorMsg.style.display = 'block';
-        };
+        source.onerror = function() { video.style.display = 'none'; errorMsg.style.display = 'block'; };
       }
     }
   </script>
