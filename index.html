@@ -18,7 +18,6 @@
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.95);
       border-radius: 15px;
-      /* Añadido un margen superior para separarlo un poco del header si es necesario */
       margin-top: 20px; 
       margin-bottom: 20px;
     }
@@ -26,6 +25,7 @@
       background-image: url('https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW1vcnxlbnwwfHwwfHx8MA%3D%3D');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       height: 90vh;
       display: flex;
       justify-content: center;
@@ -38,7 +38,7 @@
       padding: 20px;
       border-radius: 10px;
       font-size: 2em;
-      margin: 0 10px; /* Margen lateral para móviles */
+      margin: 0 10px;
     }
     .galeria {
       display: grid;
@@ -64,10 +64,10 @@
     }
     .carta-preview {
       background-color: #fff1f6;
-      padding: 30px; /* Unificado a 30px */
+      padding: 30px;
       margin-top: 30px;
-      border-left: 5px solid #cc3366; /* Unificado a 5px */
-      border-radius: 10px; /* Unificado a 10px */
+      border-left: 5px solid #cc3366;
+      border-radius: 10px;
       font-style: italic;
     }
     .leer-mas {
@@ -87,7 +87,7 @@
     .oculto {
       display: none;
     }
-    .promesas, .playlist, .frases, .historia, .detalles, .razones, .cartas-emocionales, .mapa-amor, .audio-mensaje {
+    .promesas, .playlist, .frases, .historia, .detalles, .razones, .cartas-emocionales, .mapa-amor, .audio-mensaje, .video-section {
       margin-top: 40px;
       padding: 20px;
       background-color: #ffe6f0;
@@ -133,6 +133,80 @@
       display: none;
       margin-top: 15px;
     }
+    /* Estilos mejorados para la sección de video */
+    .video-section h2 {
+      text-align: center;
+      color: #cc3366;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 400px; 
+      margin: 0 auto;
+      aspect-ratio: 9 / 16;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      overflow: hidden;
+      background-color: black;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-description {
+      margin-top: 30px;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.8;
+      color: #5c3d4f;
+      font-size: 1.1em;
+      white-space: pre-line;
+    }
+    
+    /* Estilo para el botón de despedida especial */
+    .boton-despedida {
+      background-color: #87465b;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      margin-top: 30px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-family: 'Georgia', serif;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .boton-despedida:hover {
+      background-color: #5c2d3b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    }
+    
+    /* Estilo para el texto de despedida que se revela */
+    .texto-desgarrador {
+      display: none;
+      margin-top: 30px; 
+      text-align: left;
+      font-style: italic; 
+      color: #4a4a4a; 
+      padding: 25px; 
+      background-color: #fff; 
+      border-left: 6px solid #87465b; 
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      line-height: 1.8;
+    }
+    .texto-desgarrador p {
+      margin-bottom: 15px;
+    }
+
     footer {
       margin-top: 50px;
       text-align: center;
@@ -162,7 +236,6 @@
       width: 80px;
       z-index: 999;
     }
-    /* Asegura que el contenido esté sobre las flores de fondo */
     .container, header {
       position: relative;
       z-index: 2;
@@ -179,7 +252,6 @@
 
   <div class="container">
     
-    <!-- CARTA PRINCIPAL MOVIDA DENTRO DEL CONTENEDOR -->
     <section class="carta-preview">
       <p style="font-size: 1.1em; font-weight: bold; color: #87465b;">Para Ileana Vega, la mujer que amo y seguiré eligiendo cada día...</p>
       <p>Hoy quiero hablarte desde lo más profundo de mi corazón, con la verdad por delante...</p>
@@ -198,7 +270,6 @@
         <div style="margin-top: 25px; padding: 15px; background-color: white; border-radius: 8px; text-align: center; border: 1px inset #fce4ec;">
           <p style="font-style: italic; color: #87465b; font-size: 0.9em; margin-bottom: 10px;">Escucha esto que tengo que decirte:</p>
           <audio controls style="width: 100%;">
-            <!-- Asegúrate de que la ruta al archivo de audio sea correcta -->
             <source src="audio/Dijiste que ya no me amas.1,.mp3" type="audio/mpeg">
             Tu navegador no soporta audio HTML5.
           </audio>
@@ -207,7 +278,6 @@
         <p style="text-align: right; font-weight: bold; color: #cc3366; margin-top: 20px;">Con todo mi amor y respeto, <br>David ♥</p>
       </div>
     </section>
-    <!-- FIN CARTA PRINCIPAL -->
 
     <section class="galeria">
       <div class="foto"><img src="img/1.jpg" alt="Foto 1"><p>Tu sonrisa es mi lugar feliz.</p></div>
@@ -318,6 +388,66 @@
         Tu navegador no soporta audio HTML5.
       </audio>
     </section>
+
+    <!-- SECCIÓN DE VIDEO HASTA SIEMPRE -->
+    <section class="video-section">
+      <h2>Hasta Siempre</h2>
+      <div class="video-container">
+        <!-- Video insertado con el ID de Short -->
+        <iframe 
+          src="https://www.youtube.com/embed/W2aTso85o14" 
+          title="Hasta Siempre" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      
+      <div class="video-description">
+Fueron más los momentos buenos
+que los días en los que dolió.
+
+Más las risas que las discusiones,
+más los abrazos que los silencios.
+No todo fue perfecto,
+pero fue real.
+
+Y lo real deja huella,
+aunque ya no esté.
+Hoy entiendo que no se sigue adelante
+olvidando,
+se sigue recordando lo que valió la pena.
+
+Porque cuando llega la melancolía
+no pienso en el final,
+pienso en todo lo que fuimos
+cuando la vida se sentía viva,
+cuando el mundo no pesaba tanto
+y bastaba con estar juntos.
+
+Y aunque ya no estés aquí,
+todo lo bueno que vivimos
+se quedó conmigo.
+
+Eso es lo que más pesa…
+y al mismo tiempo,
+eso es lo que me sostiene.
+      </div>
+      
+      <!-- BOTÓN DE DESPEDIDA AGREGADO AQUÍ -->
+      <div style="text-align: center;">
+        <button class="boton-despedida" onclick="document.getElementById('texto-despedida-final').style.display='block'; this.style.display='none'">
+          Cuando ya no esté contigo
+        </button>
+      </div>
+
+      <div id="texto-despedida-final" class="texto-desgarrador">
+        <p>Cuando ya no esté contigo, quiero que sepas que no me llevé rencor, me llevé recuerdos. Me llevé risas, miradas y momentos pequeños que para mí fueron gigantes. No fuiste perfecta, yo tampoco lo fui, pero lo que tuvimos fue real, y lo real no se borra con el tiempo ni con la distancia.</p>
+        <p>Si algún día me recuerdas, no quiero que duela. Quiero que sonrías pensando que, por un momento en esta vida, nos elegimos y lo dimos todo como supimos. Yo voy a seguir adelante, no porque deje de quererte, sino porque aprendí a quererte sin tenerte.</p>
+        <p>Gracias por lo que fuiste conmigo, por lo que construimos, por lo que soñamos y por lo que, aunque no duró para siempre, sí significó todo. Siempre serás parte de mi historia, y eso nadie lo puede cambiar.</p>
+      </div>
+
+    </section>
+    <!-- FIN SECCIÓN VIDEO -->
 
     <section class="detalles">
       <h2>Detalles que amo de ti</h2>
