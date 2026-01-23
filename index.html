@@ -143,8 +143,6 @@
     .video-container {
       position: relative;
       width: 100%;
-      /* Quitamos la altura fija de 600px que usamos para drive/iframe */
-      /* Dejamos que el video se ajuste, con un máximo de ancho para estética */
       max-width: 400px; 
       margin: 0 auto;
       border-radius: 15px;
@@ -154,8 +152,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 300px;
     }
-    /* Aseguramos que el video ocupe el contenedor correctamente */
     .video-container video {
       width: 100%;
       height: auto;
@@ -206,6 +204,13 @@
     }
     .texto-desgarrador p {
       margin-bottom: 15px;
+    }
+    
+    .video-error-msg {
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: none;
     }
 
     footer {
@@ -390,16 +395,23 @@
       </audio>
     </section>
 
-    <!-- SECCIÓN DE VIDEO HASTA SIEMPRE (MODO ARCHIVO LOCAL) -->
+    <!-- SECCIÓN DE VIDEO HASTA SIEMPRE -->
     <section class="video-section">
       <h2>Hasta Siempre</h2>
       <div class="video-container">
-        <!-- AQUÍ ESTÁ EL CAMBIO: Ya busca el video comprimido en GitHub -->
-        <!-- Asegúrate de que tu video se llame: video_final.mp4 -->
-        <video controls controlsList="nodownload">
-          <source src="video_final.mp4" type="video/mp4">
+        <!-- El video intentará cargarse. Si falla, mostrará el mensaje de error. -->
+        <video id="miVideoFinal" controls controlsList="nodownload">
+          <!-- AQUI ESTÁ EL CAMBIO: Ahora busca en la carpeta "video" -->
+          <source src="video/video_final.mp4" type="video/mp4">
           Tu navegador no soporta la reproducción de videos.
         </video>
+        <div id="mensajeErrorVideo" class="video-error-msg">
+          ⚠️ <strong>No se encuentra el video</strong><br><br>
+          Asegúrate de que:<br>
+          1. Creaste una carpeta llamada <strong>video</strong>.<br>
+          2. Dentro metiste el archivo <strong>video_final.mp4</strong>.<br>
+          3. Subiste AMBOS (la carpeta y el archivo) a GitHub.
+        </div>
       </div>
       
       <div class="video-description">
@@ -490,6 +502,24 @@ eso es lo que me sostiene.
       const cartaSeleccionada = document.getElementById('carta-' + tipo);
       if(cartaSeleccionada) {
           cartaSeleccionada.style.display = 'block';
+      }
+    }
+
+    // Script simple para detectar error en el video
+    var video = document.getElementById('miVideoFinal');
+    var errorMsg = document.getElementById('mensajeErrorVideo');
+    if (video) {
+      video.onerror = function() {
+        video.style.display = 'none';
+        errorMsg.style.display = 'block';
+      };
+      // También verificamos si la fuente falla
+      var source = video.querySelector('source');
+      if (source) {
+        source.onerror = function() {
+          video.style.display = 'none';
+          errorMsg.style.display = 'block';
+        };
       }
     }
   </script>
