@@ -11,7 +11,7 @@
       background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9uZG8lMjByb21hbnRpY298ZW58MHx8MHx8fDA%3D') no-repeat center center fixed;
       background-size: cover;
       color: #5c3d4f;
-      /* Ocultamos scroll al inicio para que no bajen */
+      /* Ocultamos scroll al inicio para que no bajen sin contraseña */
       overflow: hidden; 
     }
     
@@ -22,13 +22,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #ffe6f0; /* Mismo tono rosita del tema */
+      background-color: #ffe6f0;
       background-image: url('https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-hand-painted-flowers-vintage-romantic-background-png-image_4840582.png');
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 10000; /* Por encima de todo */
+      z-index: 10000;
     }
     
     .login-box {
@@ -84,7 +84,7 @@
       display: none; /* Se activa con JS */
     }
 
-    /* ESTILOS ORIGINALES DE LA PAGINA */
+    /* ESTILOS DE LA PAGINA */
     .container {
       max-width: 1200px;
       margin: auto;
@@ -116,6 +116,7 @@
       border-radius: 10px;
       font-size: 2em;
       margin: 0 10px;
+      line-height: 1.4;
     }
     
     /* SECCIONES GENERALES */
@@ -263,7 +264,7 @@
 </head>
 <body>
   
-  <!-- PANTALLA DE LOGIN (NUEVO) -->
+  <!-- PANTALLA DE LOGIN -->
   <div id="login-screen">
     <div class="login-box">
       <h2>🔒 Historia Privada</h2>
@@ -275,14 +276,15 @@
     </div>
   </div>
 
-  <!-- CONTENIDO PRINCIPAL (OCULTO HASTA PONER PASSWORD) -->
+  <!-- CONTENIDO PRINCIPAL (OCULTO) -->
   <div id="contenido-principal">
     
     <div class="flores"></div>
     <img class="hello-kitty" src="https://i0.wp.com/www.di-conexiones.com/wp-content/uploads/2024/12/hello_kitty_50_di-conexiones_01.jpg?resize=720%2C346&ssl=1" alt="Hello Kitty">
 
     <header>
-      <h1>Si tú me olvidaste a las 12…<br>yo empecé a amarte de verdad a las 12 con un segundo</h1>
+      <!-- NUEVO ENCABEZADO CORTO Y DIRECTO -->
+      <h1>Ileana: Mi principio, mi fin y mi 'siempre' favorito.</h1>
     </header>
 
     <div class="container">
