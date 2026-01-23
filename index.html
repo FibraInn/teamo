@@ -11,8 +11,80 @@
       background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9uZG8lMjByb21hbnRpY298ZW58MHx8MHx8fDA%3D') no-repeat center center fixed;
       background-size: cover;
       color: #5c3d4f;
-      overflow-x: hidden;
+      /* Ocultamos scroll al inicio para que no bajen */
+      overflow: hidden; 
     }
+    
+    /* PANTALLA DE LOGIN */
+    #login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffe6f0; /* Mismo tono rosita del tema */
+      background-image: url('https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-hand-painted-flowers-vintage-romantic-background-png-image_4840582.png');
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000; /* Por encima de todo */
+    }
+    
+    .login-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 90%;
+      width: 350px;
+      border-top: 5px solid #cc3366;
+    }
+    
+    .login-box h2 {
+      color: #cc3366;
+      margin-bottom: 10px;
+    }
+    
+    .login-box input {
+      width: 80%;
+      padding: 10px;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1.1em;
+      text-align: center;
+    }
+    
+    .login-box button {
+      background-color: #cc3366;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background 0.3s;
+    }
+    
+    .login-box button:hover {
+      background-color: #a02850;
+    }
+    
+    .error-msg {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* CONTENEDOR PRINCIPAL (Oculto al inicio) */
+    #contenido-principal {
+      display: none; /* Se activa con JS */
+    }
+
+    /* ESTILOS ORIGINALES DE LA PAGINA */
     .container {
       max-width: 1200px;
       margin: auto;
@@ -190,209 +262,225 @@
   </style>
 </head>
 <body>
-  <div class="flores"></div>
-  <img class="hello-kitty" src="https://i0.wp.com/www.di-conexiones.com/wp-content/uploads/2024/12/hello_kitty_50_di-conexiones_01.jpg?resize=720%2C346&ssl=1" alt="Hello Kitty">
+  
+  <!-- PANTALLA DE LOGIN (NUEVO) -->
+  <div id="login-screen">
+    <div class="login-box">
+      <h2>🔒 Historia Privada</h2>
+      <p>Solo quien tiene la llave de esta historia puede entrar.</p>
+      <input type="password" id="passwordInput" placeholder="Escribe la contraseña...">
+      <br>
+      <button onclick="checkPassword()">Entrar</button>
+      <p id="error-message" class="error-msg">Contraseña incorrecta. Intenta de nuevo.</p>
+    </div>
+  </div>
 
-  <header>
-    <h1>Si tú me olvidaste a las 12…<br>yo empecé a amarte de verdad a las 12 con un segundo</h1>
-  </header>
-
-  <div class="container">
+  <!-- CONTENIDO PRINCIPAL (OCULTO HASTA PONER PASSWORD) -->
+  <div id="contenido-principal">
     
-    <!-- CARTA PRINCIPAL -->
-    <section class="carta-preview">
-      <p style="font-size: 1.1em; font-weight: bold; color: #87465b;">Para Ileana Vega, la mujer que amo y seguiré eligiendo cada día...</p>
-      <p>Hoy quiero hablarte desde lo más profundo de mi corazón, con la verdad por delante...</p>
-      
-      <button class="leer-mas" onclick="document.getElementById('carta-completa-principal').style.display='block'; this.style.display='none'">Leer mi mensaje de despedida</button>
-      
-      <div id="carta-completa-principal" class="oculto" style="margin-top: 20px; line-height: 1.8; color: #4a4a4a;">
-        <p>Han pasado 17 años desde que un “sí” cambió nuestras vidas. Compartimos risas, sueños y la bendición de nuestros hijos: Andree, Samadhi, Eileen y Kai. Tú siempre fuiste el centro de mi mundo.</p>
-        <p><strong>Hoy te pido perdón.</strong> Perdón por no haber sido el hombre que soñaste, por haber dañado tu corazón y por el dolor que te causé. Reconozco que mis acciones te hirieron y es algo que me pesa en el alma.</p>
-        <p>Quiero que sepas que estoy enfrentando mi batalla más difícil: <strong>estoy luchando contra mi alcoholismo.</strong> Lo hago porque te respeto y porque no quiero que sigas sufriendo por mi culpa. Te mereces la paz que yo no supe darte.</p>
-        <p>Si algún día la vida decide que nuestros caminos del amor se vuelvan a cruzar, quiero que sepas que siempre, <em>siempre</em> estaré aquí para ti. Gracias por todo. Que estas palabras y mi voz sean el testimonio de mi arrepentimiento y de mi amor eterno.</p>
+    <div class="flores"></div>
+    <img class="hello-kitty" src="https://i0.wp.com/www.di-conexiones.com/wp-content/uploads/2024/12/hello_kitty_50_di-conexiones_01.jpg?resize=720%2C346&ssl=1" alt="Hello Kitty">
 
-        <div style="margin-top: 25px; padding: 15px; background-color: white; border-radius: 8px; text-align: center; border: 1px inset #fce4ec;">
-          <p style="font-style: italic; color: #87465b; font-size: 0.9em; margin-bottom: 10px;">Escucha esto que tengo que decirte:</p>
-          <audio controls style="width: 100%;">
-            <source src="audio/Dijiste que ya no me amas.1,.mp3" type="audio/mpeg">
-            Tu navegador no soporta audio HTML5.
-          </audio>
+    <header>
+      <h1>Si tú me olvidaste a las 12…<br>yo empecé a amarte de verdad a las 12 con un segundo</h1>
+    </header>
+
+    <div class="container">
+      
+      <!-- CARTA PRINCIPAL -->
+      <section class="carta-preview">
+        <p style="font-size: 1.1em; font-weight: bold; color: #87465b;">Para Ileana Vega, la mujer que amo y seguiré eligiendo cada día...</p>
+        <p>Hoy quiero hablarte desde lo más profundo de mi corazón, con la verdad por delante...</p>
+        
+        <button class="leer-mas" onclick="document.getElementById('carta-completa-principal').style.display='block'; this.style.display='none'">Leer mi mensaje de despedida</button>
+        
+        <div id="carta-completa-principal" class="oculto" style="margin-top: 20px; line-height: 1.8; color: #4a4a4a;">
+          <p>Han pasado 17 años desde que un “sí” cambió nuestras vidas. Compartimos risas, sueños y la bendición de nuestros hijos: Andree, Samadhi, Eileen y Kai. Tú siempre fuiste el centro de mi mundo.</p>
+          <p><strong>Hoy te pido perdón.</strong> Perdón por no haber sido el hombre que soñaste, por haber dañado tu corazón y por el dolor que te causé. Reconozco que mis acciones te hirieron y es algo que me pesa en el alma.</p>
+          <p>Quiero que sepas que estoy enfrentando mi batalla más difícil: <strong>estoy luchando contra mi alcoholismo.</strong> Lo hago porque te respeto y porque no quiero que sigas sufriendo por mi culpa. Te mereces la paz que yo no supe darte.</p>
+          <p>Si algún día la vida decide que nuestros caminos del amor se vuelvan a cruzar, quiero que sepas que siempre, <em>siempre</em> estaré aquí para ti. Gracias por todo. Que estas palabras y mi voz sean el testimonio de mi arrepentimiento y de mi amor eterno.</p>
+
+          <div style="margin-top: 25px; padding: 15px; background-color: white; border-radius: 8px; text-align: center; border: 1px inset #fce4ec;">
+            <p style="font-style: italic; color: #87465b; font-size: 0.9em; margin-bottom: 10px;">Escucha esto que tengo que decirte:</p>
+            <audio controls style="width: 100%;">
+              <source src="audio/Dijiste que ya no me amas.1,.mp3" type="audio/mpeg">
+              Tu navegador no soporta audio HTML5.
+            </audio>
+          </div>
+          
+          <p style="text-align: right; font-weight: bold; color: #cc3366; margin-top: 20px;">Con todo mi amor y respeto, <br>David ♥</p>
+        </div>
+      </section>
+
+      <!-- GALERIA -->
+      <section class="galeria">
+        <div class="foto"><img src="img/1.jpg" alt="Foto 1"><p>Tu sonrisa es mi lugar feliz.</p></div>
+        <div class="foto"><img src="img/2.jpg" alt="Foto 2"><p>Cuando me amabas.</p></div>
+        <div class="foto"><img src="img/3.jpg" alt="Foto 3"><p>Amarte es lo más fácil que he hecho.</p></div>
+        <div class="foto"><img src="img/4.jpeg" alt="Foto 4"><p>Juntos, siempre mejores.</p></div>
+        <div class="foto"><img src="img/5.jpeg" alt="Foto 5"><p>Tu mirada dice más que mil palabras.</p></div>
+        <div class="foto"><img src="img/6.jpeg" alt="Foto 6"><p>Así se ve la felicidad.</p></div>
+        <div class="foto"><img src="img/7.jpeg" alt="Foto 7"><p>Un instante, una eternidad contigo.</p></div>
+        <div class="foto"><img src="img/8.jpeg" alt="Foto 8"><p>Eres la poesía en mi caos.</p></div>
+        <div class="foto"><img src="img/9.jpeg" alt="Foto 9"><p>Te elijo todos los días.</p></div>
+        <div class="foto"><img src="img/10.jpeg" alt="Foto 10"><p>Un recuerdo más que atesoro.</p></div>
+        <div class="foto"><img src="img/11.jpeg" alt="Foto 11"><p>Mi amor, mi todo.</p></div>
+        <div class="foto"><img src="img/10.png" alt="Foto 12"><p>tu y yo.</p></div>
+        <div class="foto"><img src="img/15.jpg" alt="Foto 13"><p>juntos los dos.</p></div>
+        <div class="foto"><img src="img/12.jpeg" alt="Foto 14"><p>Contigo, cualquier lugar es hogar.</p></div>
+      </section>
+
+      <section class="promesas">
+        <h2>Mis promesas para ti</h2>
+        <ul>
+          <li>Escucharte con el corazón, no solo con los oídos.</li>
+          <li>Cuidar tu paz emocional como si fuera mi mayor tesoro.</li>
+          <li>Ser constante y honesto cada día.</li>
+          <li>Nunca más darte razones para llorar por mí.</li>
+          <li>Caminar a tu lado como tu pareja y tu amigo incondicional.</li>
+        </ul>
+      </section>
+
+      <section class="razones">
+        <h2>¿Por qué luchar por ti?</h2>
+        <ul>
+          <li>Porque sin ti no me reconozco.</li>
+          <li>Porque tu amor me transformó.</li>
+          <li>Porque aún tengo tanto que darte.</li>
+          <li>Porque somos un equipo, incluso cuando todo se complica.</li>
+          <li>Porque creo en nosotros más que nunca.</li>
+          <li>Porque tú eres mi hogar, no un lugar.</li>
+        </ul>
+      </section>
+
+      <!-- NUEVA SECCION 1: LO QUE ME ENSEÑASTE -->
+      <section class="enseñanzas">
+        <h2>🌱 Lo que floreció en mí gracias a ti</h2>
+        <div class="grid-tarjetas">
+          <div class="tarjeta"><p>De ti aprendí que la paciencia también es una forma de amar.</p></div>
+          <div class="tarjeta"><p>Contigo entendí que el amor se demuestra en lo cotidiano, no solo en los grandes momentos.</p></div>
+          <div class="tarjeta"><p>Aprendí que cuidar a alguien también es cuidarse a uno mismo.</p></div>
+          <div class="tarjeta"><p>Me enseñaste a escuchar, incluso cuando no entendía.</p></div>
+          <div class="tarjeta"><p>Gracias a ti supe lo que es amar sin condiciones.</p></div>
+          <div class="tarjeta"><p>Aprendí que no todo lo que termina fracasa.</p></div>
+          <div class="tarjeta"><p>Me enseñaste que la vulnerabilidad no es debilidad.</p></div>
+          <div class="tarjeta"><p>Contigo entendí que el hogar no es un lugar, es una persona.</p></div>
+          <div class="tarjeta"><p>Me enseñaste que el amor también se construye en el cansancio.</p></div>
+          <div class="tarjeta"><p>Aprendí que pedir perdón es un acto de valentía.</p></div>
+          <div class="tarjeta"><p>Gracias a ti descubrí que merezco sanar, aunque duela el proceso.</p></div>
+          <div class="tarjeta"><p>Me enseñaste que el tiempo compartido vale más que cualquier promesa.</p></div>
+          <div class="tarjeta"><p>Contigo aprendí a amar incluso en medio del caos.</p></div>
+          <div class="tarjeta"><p>Me enseñaste que los recuerdos también sostienen cuando ya no queda nada más.</p></div>
+          <div class="tarjeta"><p>Aprendí que amar no siempre significa quedarse.</p></div>
+          <div class="tarjeta"><p>Gracias a ti entendí que crecer también implica soltar.</p></div>
+          <div class="tarjeta"><p>Me enseñaste que la risa puede salvar días enteros.</p></div>
+          <div class="tarjeta"><p>Contigo supe lo que es construir una vida desde cero.</p></div>
+          <div class="tarjeta"><p>Me enseñaste que algunas personas llegan para cambiarte, no para quedarse.</p></div>
+        </div>
+      </section>
+
+      <!-- NUEVA SECCION 3: COSAS QUE NUNCA TE DIJE -->
+      <section class="notas-secretas">
+        <h2>📝 Cosas que nunca te dije...</h2>
+        <div class="notas-grid">
+          <div class="nota">Nunca te dije que muchas veces fui fuerte solo para no preocuparte.</div>
+          <div class="nota">Nunca te dije que me daba miedo perderte incluso cuando aún estabas conmigo.</div>
+          <div class="nota">Nunca te dije que aprendí a callar cosas por no hacerte sentir mal.</div>
+          <div class="nota">Nunca te dije que algunas noches me sentí solo, aun estando a tu lado.</div>
+          <div class="nota">Nunca te dije que te admiraba más de lo que expresé.</div>
+          <div class="nota">Nunca te dije que a veces no sabía cómo amar mejor.</div>
+          <div class="nota">Nunca te dije que tus silencios también me dolían.</div>
+          <div class="nota">Nunca te dije que había días en los que quería rendirme, pero no contigo.</div>
+          <div class="nota">Nunca te dije que me sentí insuficiente más veces de las que imaginas.</div>
+          <div class="nota">Nunca te dije que guardé palabras por miedo a perderte.</div>
+          <div class="nota">Nunca te dije que tu ausencia empezó a doler antes de que te fueras.</div>
+          <div class="nota">Nunca te dije que también necesitaba que me cuidaran.</div>
+          <div class="nota">Nunca te dije que muchas veces quise pedir ayuda y no supe cómo.</div>
+          <div class="nota">Nunca te dije que aun en lo malo, seguía eligiéndote.</div>
+          <div class="nota">Nunca te dije que aprendí a sonreír cuando por dentro estaba cansado.</div>
+          <div class="nota">Nunca te dije que me dolía no saber qué estaba pasando por tu mente.</div>
+          <div class="nota">Nunca te dije que el amor también me dio miedo.</div>
+        </div>
+      </section>
+
+      <section class="cartas-emocionales">
+        <h2>Abrir cuando...</h2>
+        <div class="cartas-grid">
+          <button onclick="mostrarCarta('enojo')">Estés enojada conmigo</button>
+          <button onclick="mostrarCarta('duda')">Dudes de mi amor</button>
+          <button onclick="mostrarCarta('soledad')">Te sientas sola</button>
+          <button onclick="mostrarCarta('extrañar')">Me extrañes</button>
+        </div>
+        <div id="carta-enojo" class="carta-emocional">
+          <p>Si estás enojada, lo entiendo. No soy perfecto y te he fallado. Pero estoy aquí, dispuesto a aprender de mis errores, a escucharte, a no huir. Porque te respeto y porque te amo.</p>
+        </div>
+        <div id="carta-duda" class="carta-emocional">
+          <p>Cuando dudes de mi amor, solo recuerda lo que estamos construyendo. Puede que no siempre lo demuestre bien, pero nunca ha dejado de estar aquí... latiendo por ti.</p>
+        </div>
+        <div id="carta-soledad" class="carta-emocional">
+          <p>Si te sientes sola, abre esta carta sabiendo que yo te pienso cada día. Aunque estemos distantes, tú estás conmigo. En mi mente, en mi alma y en mi corazón.</p>
+        </div>
+        <div id="carta-extrañar" class="carta-emocional">
+          <p>¿Me extrañas? Yo también. Cada minuto sin ti me recuerda cuánto significas para mí. Espero poder abrazarte pronto, como si el tiempo no hubiera pasado.</p>
+        </div>
+      </section>
+
+      <section class="frases">
+        <h2>Frases para ti</h2>
+        <ul>
+          <li>Y pensé en flores... porque son bonitas como tú.</li>
+          <li>Amarte ha sido mi lección más bonita.</li>
+          <li>No quiero un final feliz, quiero una historia sin final contigo.</li>
+          <li>Desde los pequeños detalles, empieza el amor verdadero.</li>
+          <li>Eres lo mejor que me ha pasado.</li>
+          <li>Jamás cruzó por mi mente dejarte.</li>
+          <li>Fui un estúpido que quiere recuperar el tiempo.</li>
+        </ul>
+      </section>
+
+      <section class="mapa-amor">
+        <h2>🗺️ Nuestro Mapa del Amor</h2>
+        <p>Cada lugar en este mapa tiene un pedacito de nuestra historia. Desde donde comenzó todo, hasta cada paso que dimos juntos.</p>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1o1VtTYINzoRRVejkAtGH1NDekKlAub0&ehbc=2E312F" width="100%" height="480" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+        <p style="margin-top:10px; font-style: italic;">Nuestro mapa de amor… que aún tiene muchos destinos por descubrir ❤️</p>
+      </section>
+
+      <section class="historia">
+        <h2>Nuestra historia</h2>
+        <ul>
+          <li><strong>2008:</strong> Nos conocimos y empezó todo.</li>
+          <li><strong>28/10/2009:</strong> Nació nuestro primer gran amor, Andree.</li>
+          <li><strong>21/07/2011:</strong> Llegó nuestra dulce Samadhi.</li>
+          <li><strong>13/02/2014:</strong> Nos comprometimos ante la sociedad.</li>
+          <li><strong>17/06/2015:</strong> Nació nuestra alegría llamada Eileen.</li>
+          <li><strong>18/08/2023:</strong> Kai llegó a completar nuestra familia.</li>
+        </ul>
+      </section>
+      
+      <section class="audio-mensaje">
+        <h2>Mi voz para ti</h2>
+        <p>Escucha esto cuando quieras recordarme cuánto te amo:</p>
+        <audio controls style="width: 100%;">
+          <source src="audio/mi_voz.mp3" type="audio/mpeg">
+          Tu navegador no soporta audio HTML5.
+        </audio>
+      </section>
+
+      <section class="video-section">
+        <h2>Hasta Siempre</h2>
+        <div class="video-container">
+          <!-- BUSCANDO VIDEO EN LA CARPETA video/ -->
+          <video id="miVideoFinal" controls controlsList="nodownload">
+            <source src="video/video_final.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de videos.
+          </video>
+          <div id="mensajeErrorVideo" class="video-error-msg">
+            ⚠️ <strong>No se encuentra el video</strong><br><br>
+            Asegúrate de que la carpeta se llame <strong>video</strong> y el archivo <strong>video_final.mp4</strong>.
+          </div>
         </div>
         
-        <p style="text-align: right; font-weight: bold; color: #cc3366; margin-top: 20px;">Con todo mi amor y respeto, <br>David ♥</p>
-      </div>
-    </section>
-
-    <!-- GALERIA -->
-    <section class="galeria">
-      <div class="foto"><img src="img/1.jpg" alt="Foto 1"><p>Tu sonrisa es mi lugar feliz.</p></div>
-      <div class="foto"><img src="img/2.jpg" alt="Foto 2"><p>Cuando me amabas.</p></div>
-      <div class="foto"><img src="img/3.jpg" alt="Foto 3"><p>Amarte es lo más fácil que he hecho.</p></div>
-      <div class="foto"><img src="img/4.jpeg" alt="Foto 4"><p>Juntos, siempre mejores.</p></div>
-      <div class="foto"><img src="img/5.jpeg" alt="Foto 5"><p>Tu mirada dice más que mil palabras.</p></div>
-      <div class="foto"><img src="img/6.jpeg" alt="Foto 6"><p>Así se ve la felicidad.</p></div>
-      <div class="foto"><img src="img/7.jpeg" alt="Foto 7"><p>Un instante, una eternidad contigo.</p></div>
-      <div class="foto"><img src="img/8.jpeg" alt="Foto 8"><p>Eres la poesía en mi caos.</p></div>
-      <div class="foto"><img src="img/9.jpeg" alt="Foto 9"><p>Te elijo todos los días.</p></div>
-      <div class="foto"><img src="img/10.jpeg" alt="Foto 10"><p>Un recuerdo más que atesoro.</p></div>
-      <div class="foto"><img src="img/11.jpeg" alt="Foto 11"><p>Mi amor, mi todo.</p></div>
-      <div class="foto"><img src="img/10.png" alt="Foto 12"><p>tu y yo.</p></div>
-      <div class="foto"><img src="img/15.jpg" alt="Foto 13"><p>juntos los dos.</p></div>
-      <div class="foto"><img src="img/12.jpeg" alt="Foto 14"><p>Contigo, cualquier lugar es hogar.</p></div>
-    </section>
-
-    <section class="promesas">
-      <h2>Mis promesas para ti</h2>
-      <ul>
-        <li>Escucharte con el corazón, no solo con los oídos.</li>
-        <li>Cuidar tu paz emocional como si fuera mi mayor tesoro.</li>
-        <li>Ser constante y honesto cada día.</li>
-        <li>Nunca más darte razones para llorar por mí.</li>
-        <li>Caminar a tu lado como tu pareja y tu amigo incondicional.</li>
-      </ul>
-    </section>
-
-    <section class="razones">
-      <h2>¿Por qué luchar por ti?</h2>
-      <ul>
-        <li>Porque sin ti no me reconozco.</li>
-        <li>Porque tu amor me transformó.</li>
-        <li>Porque aún tengo tanto que darte.</li>
-        <li>Porque somos un equipo, incluso cuando todo se complica.</li>
-        <li>Porque creo en nosotros más que nunca.</li>
-        <li>Porque tú eres mi hogar, no un lugar.</li>
-      </ul>
-    </section>
-
-    <!-- NUEVA SECCION 1: LO QUE ME ENSEÑASTE -->
-    <section class="enseñanzas">
-      <h2>🌱 Lo que floreció en mí gracias a ti</h2>
-      <div class="grid-tarjetas">
-        <div class="tarjeta"><p>De ti aprendí que la paciencia también es una forma de amar.</p></div>
-        <div class="tarjeta"><p>Contigo entendí que el amor se demuestra en lo cotidiano, no solo en los grandes momentos.</p></div>
-        <div class="tarjeta"><p>Aprendí que cuidar a alguien también es cuidarse a uno mismo.</p></div>
-        <div class="tarjeta"><p>Me enseñaste a escuchar, incluso cuando no entendía.</p></div>
-        <div class="tarjeta"><p>Gracias a ti supe lo que es amar sin condiciones.</p></div>
-        <div class="tarjeta"><p>Aprendí que no todo lo que termina fracasa.</p></div>
-        <div class="tarjeta"><p>Me enseñaste que la vulnerabilidad no es debilidad.</p></div>
-        <div class="tarjeta"><p>Contigo entendí que el hogar no es un lugar, es una persona.</p></div>
-        <div class="tarjeta"><p>Me enseñaste que el amor también se construye en el cansancio.</p></div>
-        <div class="tarjeta"><p>Aprendí que pedir perdón es un acto de valentía.</p></div>
-        <div class="tarjeta"><p>Gracias a ti descubrí que merezco sanar, aunque duela el proceso.</p></div>
-        <div class="tarjeta"><p>Me enseñaste que el tiempo compartido vale más que cualquier promesa.</p></div>
-        <div class="tarjeta"><p>Contigo aprendí a amar incluso en medio del caos.</p></div>
-        <div class="tarjeta"><p>Me enseñaste que los recuerdos también sostienen cuando ya no queda nada más.</p></div>
-        <div class="tarjeta"><p>Aprendí que amar no siempre significa quedarse.</p></div>
-        <div class="tarjeta"><p>Gracias a ti entendí que crecer también implica soltar.</p></div>
-        <div class="tarjeta"><p>Me enseñaste que la risa puede salvar días enteros.</p></div>
-        <div class="tarjeta"><p>Contigo supe lo que es construir una vida desde cero.</p></div>
-        <div class="tarjeta"><p>Me enseñaste que algunas personas llegan para cambiarte, no para quedarse.</p></div>
-      </div>
-    </section>
-
-    <!-- NUEVA SECCION 3: COSAS QUE NUNCA TE DIJE -->
-    <section class="notas-secretas">
-      <h2>📝 Cosas que nunca te dije...</h2>
-      <div class="notas-grid">
-        <div class="nota">Nunca te dije que muchas veces fui fuerte solo para no preocuparte.</div>
-        <div class="nota">Nunca te dije que me daba miedo perderte incluso cuando aún estabas conmigo.</div>
-        <div class="nota">Nunca te dije que aprendí a callar cosas por no hacerte sentir mal.</div>
-        <div class="nota">Nunca te dije que algunas noches me sentí solo, aun estando a tu lado.</div>
-        <div class="nota">Nunca te dije que te admiraba más de lo que expresé.</div>
-        <div class="nota">Nunca te dije que a veces no sabía cómo amar mejor.</div>
-        <div class="nota">Nunca te dije que tus silencios también me dolían.</div>
-        <div class="nota">Nunca te dije que había días en los que quería rendirme, pero no contigo.</div>
-        <div class="nota">Nunca te dije que me sentí insuficiente más veces de las que imaginas.</div>
-        <div class="nota">Nunca te dije que guardé palabras por miedo a perderte.</div>
-        <div class="nota">Nunca te dije que tu ausencia empezó a doler antes de que te fueras.</div>
-        <div class="nota">Nunca te dije que también necesitaba que me cuidaran.</div>
-        <div class="nota">Nunca te dije que muchas veces quise pedir ayuda y no supe cómo.</div>
-        <div class="nota">Nunca te dije que aun en lo malo, seguía eligiéndote.</div>
-        <div class="nota">Nunca te dije que aprendí a sonreír cuando por dentro estaba cansado.</div>
-        <div class="nota">Nunca te dije que me dolía no saber qué estaba pasando por tu mente.</div>
-        <div class="nota">Nunca te dije que el amor también me dio miedo.</div>
-      </div>
-    </section>
-
-    <section class="cartas-emocionales">
-      <h2>Abrir cuando...</h2>
-      <div class="cartas-grid">
-        <button onclick="mostrarCarta('enojo')">Estés enojada conmigo</button>
-        <button onclick="mostrarCarta('duda')">Dudes de mi amor</button>
-        <button onclick="mostrarCarta('soledad')">Te sientas sola</button>
-        <button onclick="mostrarCarta('extrañar')">Me extrañes</button>
-      </div>
-      <div id="carta-enojo" class="carta-emocional">
-        <p>Si estás enojada, lo entiendo. No soy perfecto y te he fallado. Pero estoy aquí, dispuesto a aprender de mis errores, a escucharte, a no huir. Porque te respeto y porque te amo.</p>
-      </div>
-      <div id="carta-duda" class="carta-emocional">
-        <p>Cuando dudes de mi amor, solo recuerda lo que estamos construyendo. Puede que no siempre lo demuestre bien, pero nunca ha dejado de estar aquí... latiendo por ti.</p>
-      </div>
-      <div id="carta-soledad" class="carta-emocional">
-        <p>Si te sientes sola, abre esta carta sabiendo que yo te pienso cada día. Aunque estemos distantes, tú estás conmigo. En mi mente, en mi alma y en mi corazón.</p>
-      </div>
-      <div id="carta-extrañar" class="carta-emocional">
-        <p>¿Me extrañas? Yo también. Cada minuto sin ti me recuerda cuánto significas para mí. Espero poder abrazarte pronto, como si el tiempo no hubiera pasado.</p>
-      </div>
-    </section>
-
-    <section class="frases">
-      <h2>Frases para ti</h2>
-      <ul>
-        <li>Y pensé en flores... porque son bonitas como tú.</li>
-        <li>Amarte ha sido mi lección más bonita.</li>
-        <li>No quiero un final feliz, quiero una historia sin final contigo.</li>
-        <li>Desde los pequeños detalles, empieza el amor verdadero.</li>
-        <li>Eres lo mejor que me ha pasado.</li>
-        <li>Jamás cruzó por mi mente dejarte.</li>
-        <li>Fui un estúpido que quiere recuperar el tiempo.</li>
-      </ul>
-    </section>
-
-    <section class="mapa-amor">
-      <h2>🗺️ Nuestro Mapa del Amor</h2>
-      <p>Cada lugar en este mapa tiene un pedacito de nuestra historia. Desde donde comenzó todo, hasta cada paso que dimos juntos.</p>
-      <iframe src="https://www.google.com/maps/d/embed?mid=1o1VtTYINzoRRVejkAtGH1NDekKlAub0&ehbc=2E312F" width="100%" height="480" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
-      <p style="margin-top:10px; font-style: italic;">Nuestro mapa de amor… que aún tiene muchos destinos por descubrir ❤️</p>
-    </section>
-
-    <section class="historia">
-      <h2>Nuestra historia</h2>
-      <ul>
-        <li><strong>2008:</strong> Nos conocimos y empezó todo.</li>
-        <li><strong>28/10/2009:</strong> Nació nuestro primer gran amor, Andree.</li>
-        <li><strong>21/07/2011:</strong> Llegó nuestra dulce Samadhi.</li>
-        <li><strong>13/02/2014:</strong> Nos comprometimos ante la sociedad.</li>
-        <li><strong>17/06/2015:</strong> Nació nuestra alegría llamada Eileen.</li>
-        <li><strong>18/08/2023:</strong> Kai llegó a completar nuestra familia.</li>
-      </ul>
-    </section>
-    
-    <section class="audio-mensaje">
-      <h2>Mi voz para ti</h2>
-      <p>Escucha esto cuando quieras recordarme cuánto te amo:</p>
-      <audio controls style="width: 100%;">
-        <source src="audio/mi_voz.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </section>
-
-    <section class="video-section">
-      <h2>Hasta Siempre</h2>
-      <div class="video-container">
-        <!-- BUSCANDO VIDEO EN LA CARPETA video/ -->
-        <video id="miVideoFinal" controls controlsList="nodownload">
-          <source src="video/video_final.mp4" type="video/mp4">
-          Tu navegador no soporta la reproducción de videos.
-        </video>
-        <div id="mensajeErrorVideo" class="video-error-msg">
-          ⚠️ <strong>No se encuentra el video</strong><br><br>
-          Asegúrate de que la carpeta se llame <strong>video</strong> y el archivo <strong>video_final.mp4</strong>.
-        </div>
-      </div>
-      
-      <div class="video-description">
+        <div class="video-description">
 Fueron más los momentos buenos que los días en los que dolió.
 Más las risas que las discusiones, más los abrazos que los silencios.
 No todo fue perfecto, pero fue real.
@@ -407,107 +495,127 @@ cuando el mundo no pesaba tanto y bastaba con estar juntos.
 
 Y aunque ya no estés aquí, todo lo bueno que vivimos se quedó conmigo.
 Eso es lo que más pesa… y al mismo tiempo, eso es lo que me sostiene.
-      </div>
-      
-      <div style="text-align: center;">
-        <button class="boton-despedida" onclick="document.getElementById('texto-despedida-final').style.display='block'; this.style.display='none'">
-          Cuando ya no esté contigo
-        </button>
-      </div>
-
-      <div id="texto-despedida-final" class="texto-desgarrador">
-        <p>Cuando ya no esté contigo, quiero que sepas que no me llevé rencor, me llevé recuerdos. Me llevé risas, miradas y momentos pequeños que para mí fueron gigantes. No fuiste perfecta, yo tampoco lo fui, pero lo que tuvimos fue real, y lo real no se borra con el tiempo ni con la distancia.</p>
-        <p>Si algún día me recuerdas, no quiero que duela. Quiero que sonrías pensando que, por un momento en esta vida, nos elegimos y lo dimos todo como supimos. Yo voy a seguir adelante, no porque deje de quererte, sino porque aprendí a quererte sin tenerte.</p>
-        <p>Gracias por lo que fuiste conmigo, por lo que construimos, por lo que soñamos y por lo que, aunque no duró para siempre, sí significó todo. Siempre serás parte de mi historia, y eso nadie lo puede cambiar.</p>
-      </div>
-    </section>
-
-    <!-- NUEVA SECCION 2: DESEOS AL UNIVERSO (Cielo) -->
-    <section class="deseos-futuro">
-      <h2>✨ Mis deseos para tu futuro</h2>
-      <div class="cielo-nocturno">
-        <p style="margin-bottom:20px; font-size:0.9em; color:#ddd;">(Toca las estrellas para ver mis deseos para ti)</p>
-        <div class="contenedor-estrellas">
-            <!-- 20 Estrellas para los 20 deseos -->
-            <span class="estrella" onclick="mostrarDeseo('Deseo que encuentres paz, incluso en los días en que todo pese.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que la vida te regale más sonrisas de las que te quitó.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que nunca dudes de tu valor ni de lo que mereces.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Deseo que te sientas amada, cuidada y elegida.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que sanes todo aquello que alguna vez te dolió en silencio.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que encuentres a alguien que te abrace como necesitas.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Deseo que sigas creciendo sin miedo a empezar de nuevo.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que el futuro te trate con la ternura que das.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que nunca te falte fuerza cuando la necesites.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Deseo que tus sueños encuentren caminos abiertos.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que la risa te acompañe más seguido que la tristeza.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que aprendas a soltar sin culpas ni reproches.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Deseo que te mires con amor y orgullo.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que la vida te sorprenda con momentos simples y verdaderos.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que siempre tengas un lugar seguro al cual volver.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Deseo que el amor te llegue sin heridas del pasado.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que tus días estén llenos de calma y sentido.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que nunca olvides lo fuerte que eres.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Deseo que el tiempo te regale claridad y paz.')">⭐</span>
-            <span class="estrella" onclick="mostrarDeseo('Que seas feliz, incluso si esa felicidad ya no me incluye.')">⭐</span>
         </div>
-        <div id="deseo-texto">Selecciona una estrella...</div>
-      </div>
-    </section>
+        
+        <div style="text-align: center;">
+          <button class="boton-despedida" onclick="document.getElementById('texto-despedida-final').style.display='block'; this.style.display='none'">
+            Cuando ya no esté contigo
+          </button>
+        </div>
 
-    <section class="detalles">
-      <h2>Detalles que amo de ti</h2>
-      <ul>
-        <li>Tu risa cuando ves memes tontos.</li>
-        <li>Tus besos.</li>
-        <li>Cómo eres madre con mis hijos.</li>
-        <li>Tus peleas (sí, también esas 😅).</li>
-        <li>Tu fuerza.</li>
-        <li>Tu cara.</li>
-        <li>Tu olor.</li>
-        <li><strong>Pero lo que más amo es lo que soy yo cuando estoy contigo.</strong></li>
-      </ul>
-    </section>
+        <div id="texto-despedida-final" class="texto-desgarrador">
+          <p>Cuando ya no esté contigo, quiero que sepas que no me llevé rencor, me llevé recuerdos. Me llevé risas, miradas y momentos pequeños que para mí fueron gigantes. No fuiste perfecta, yo tampoco lo fui, pero lo que tuvimos fue real, y lo real no se borra con el tiempo ni con la distancia.</p>
+          <p>Si algún día me recuerdas, no quiero que duela. Quiero que sonrías pensando que, por un momento en esta vida, nos elegimos y lo dimos todo como supimos. Yo voy a seguir adelante, no porque deje de quererte, sino porque aprendí a quererte sin tenerte.</p>
+          <p>Gracias por lo que fuiste conmigo, por lo que construimos, por lo que soñamos y por lo que, aunque no duró para siempre, sí significó todo. Siempre serás parte de mi historia, y eso nadie lo puede cambiar.</p>
+        </div>
+      </section>
 
-    <section class="playlist">
-      <h2>Nuestra música</h2>
-      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-        src="https://www.youtube.com/embed/KNZH-emehxA?autoplay=0&loop=1&playlist=KNZH-emehxA"></iframe>
-      <p><strong>Playlist:</strong></p>
-      <ul>
-        <li><a href="https://www.youtube.com/watch?v=V2eocmz9HUY" target="_blank">Canción para ti 1</a></li>
-        <li><a href="https://www.youtube.com/watch?v=lIDL5-Yqs3g" target="_blank">Canción para ti 2</a></li>
-        <li><a href="https://www.youtube.com/watch?v=s3O_LUCMuA8" target="_blank">Canción para ti 3</a></li>
-        <li><a href="https://www.youtube.com/watch?v=txFx1aR91XQ" target="_blank">Canción para ti 4</a></li>
-        <li><a href="https://www.youtube.com/watch?v=Ek4bQ4HEhJc" target="_blank">Canción para ti 5</a></li>
-        <li><a href="https://www.youtube.com/watch?v=a0-6lEdm93k" target="_blank">Canción para ti 6</a></li>
-      </ul>
-    </section>
+      <!-- NUEVA SECCION 2: DESEOS AL UNIVERSO (Cielo) -->
+      <section class="deseos-futuro">
+        <h2>✨ Mis deseos para tu futuro</h2>
+        <div class="cielo-nocturno">
+          <p style="margin-bottom:20px; font-size:0.9em; color:#ddd;">(Toca las estrellas para ver mis deseos para ti)</p>
+          <div class="contenedor-estrellas">
+              <!-- 20 Estrellas para los 20 deseos -->
+              <span class="estrella" onclick="mostrarDeseo('Deseo que encuentres paz, incluso en los días en que todo pese.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que la vida te regale más sonrisas de las que te quitó.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que nunca dudes de tu valor ni de lo que mereces.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Deseo que te sientas amada, cuidada y elegida.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que sanes todo aquello que alguna vez te dolió en silencio.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que encuentres a alguien que te abrace como necesitas.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Deseo que sigas creciendo sin miedo a empezar de nuevo.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que el futuro te trate con la ternura que das.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que nunca te falte fuerza cuando la necesites.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Deseo que tus sueños encuentren caminos abiertos.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que la risa te acompañe más seguido que la tristeza.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que aprendas a soltar sin culpas ni reproches.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Deseo que te mires con amor y orgullo.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que la vida te sorprenda con momentos simples y verdaderos.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que siempre tengas un lugar seguro al cual volver.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Deseo que el amor te llegue sin heridas del pasado.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que tus días estén llenos de calma y sentido.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que nunca olvides lo fuerte que eres.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Deseo que el tiempo te regale claridad y paz.')">⭐</span>
+              <span class="estrella" onclick="mostrarDeseo('Que seas feliz, incluso si esa felicidad ya no me incluye.')">⭐</span>
+          </div>
+          <div id="deseo-texto">Selecciona una estrella...</div>
+        </div>
+      </section>
 
-    <!-- 4. NUEVA SECCIÓN: CIERRE FINAL (GLOBO) -->
-    <section class="cierre-final">
-      <h2>El último paso...</h2>
-      <p>A veces amar también significa saber soltar para que el otro vuele.</p>
-      <button class="boton-despedida" style="background-color: #5c3d4f;" onclick="soltarGlobo()">Dejarte ir en paz 🎈</button>
-      
-      <div id="mensaje-final-adios" class="mensaje-final-adios">
-        Gracias por todo, Osita. Sé feliz.<br><br>
-        Recuerda que siempre te voy a amar aunque siga peleando con los demonios de mi cabeza.<br>
-        Si algún día los venzo, estaré dispuesto siempre a volver.<br>
-        Y si algún día me vencen... recuérdame siempre en los mejores momentos.
-      </div>
-    </section>
+      <section class="detalles">
+        <h2>Detalles que amo de ti</h2>
+        <ul>
+          <li>Tu risa cuando ves memes tontos.</li>
+          <li>Tus besos.</li>
+          <li>Cómo eres madre con mis hijos.</li>
+          <li>Tus peleas (sí, también esas 😅).</li>
+          <li>Tu fuerza.</li>
+          <li>Tu cara.</li>
+          <li>Tu olor.</li>
+          <li><strong>Pero lo que más amo es lo que soy yo cuando estoy contigo.</strong></li>
+        </ul>
+      </section>
 
-    <!-- GLOBO ANIMADO -->
-    <div id="globo">🎈</div>
+      <section class="playlist">
+        <h2>Nuestra música</h2>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://www.youtube.com/embed/KNZH-emehxA?autoplay=0&loop=1&playlist=KNZH-emehxA"></iframe>
+        <p><strong>Playlist:</strong></p>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=V2eocmz9HUY" target="_blank">Canción para ti 1</a></li>
+          <li><a href="https://www.youtube.com/watch?v=lIDL5-Yqs3g" target="_blank">Canción para ti 2</a></li>
+          <li><a href="https://www.youtube.com/watch?v=s3O_LUCMuA8" target="_blank">Canción para ti 3</a></li>
+          <li><a href="https://www.youtube.com/watch?v=txFx1aR91XQ" target="_blank">Canción para ti 4</a></li>
+          <li><a href="https://www.youtube.com/watch?v=Ek4bQ4HEhJc" target="_blank">Canción para ti 5</a></li>
+          <li><a href="https://www.youtube.com/watch?v=a0-6lEdm93k" target="_blank">Canción para ti 6</a></li>
+        </ul>
+      </section>
 
-    <footer>
-      Con todo mi amor,<br>
-      <span class="firma">David ♥</span><br>
-      <a href="https://www.facebook.com/ileana.vgsl" target="_blank" style="color:white; text-decoration:underline;">Tu Facebook</a>
-    </footer>
+      <!-- 4. NUEVA SECCIÓN: CIERRE FINAL (GLOBO) -->
+      <section class="cierre-final">
+        <h2>El último paso...</h2>
+        <p>A veces amar también significa saber soltar para que el otro vuele.</p>
+        <button class="boton-despedida" style="background-color: #5c3d4f;" onclick="soltarGlobo()">Dejarte ir en paz 🎈</button>
+        
+        <div id="mensaje-final-adios" class="mensaje-final-adios">
+          Gracias por todo, Osita. Sé feliz.<br><br>
+          Recuerda que siempre te voy a amar aunque siga peleando con los demonios de mi cabeza.<br>
+          Si algún día los venzo, estaré dispuesto siempre a volver.<br>
+          Y si algún día me vencen... recuérdame siempre en los mejores momentos.
+        </div>
+      </section>
+
+      <!-- GLOBO ANIMADO -->
+      <div id="globo">🎈</div>
+
+      <footer>
+        Con todo mi amor,<br>
+        <span class="firma">David ♥</span><br>
+        <a href="https://www.facebook.com/ileana.vgsl" target="_blank" style="color:white; text-decoration:underline;">Tu Facebook</a>
+      </footer>
+    </div>
   </div>
 
   <script>
+    // FUNCION LOGIN
+    function checkPassword() {
+      const pass = document.getElementById('passwordInput').value;
+      if (pass === 'ASEK') {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('contenido-principal').style.display = 'block';
+        document.body.style.overflow = 'auto'; // Permitir scroll
+      } else {
+        document.getElementById('error-message').style.display = 'block';
+      }
+    }
+
+    // Permitir dar Enter en el input de contraseña
+    document.getElementById('passwordInput').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
     function mostrarCarta(tipo) {
       document.querySelectorAll('.carta-emocional').forEach(div => div.style.display = 'none');
       const cartaSeleccionada = document.getElementById('carta-' + tipo);
