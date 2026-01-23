@@ -214,6 +214,15 @@
       justify-content: center;
     }
 
+    /* ESTILOS SECCIONES FUTURAS BLOQUEADAS */
+    .seccion-futura { border: 2px dashed #cc3366; background-color: #fff0f5; text-align: center; }
+    .seccion-futura h2 { color: #87465b; font-size: 1.5em; }
+    .candado-box { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-top: 15px; }
+    .candado-box input { padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 200px; text-align: center; }
+    .candado-box button { background-color: #87465b; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-left: 5px; }
+    .contenido-futuro { margin-top: 20px; border-top: 1px solid #cc3366; padding-top: 20px; text-align: left; }
+    .contenido-futuro h3 { color: #cc3366; text-align: center; }
+
     /* 4. CIERRE (Globo) */
     .cierre-final { text-align: center; padding: 60px 20px; background: white; border: 2px solid #ffe6f0; }
     .boton-despedida {
@@ -573,6 +582,91 @@ Eso es lo que más pesa… y al mismo tiempo, eso es lo que me sostiene.
         </ul>
       </section>
 
+      <!-- SECCIONES FUTURAS BLOQUEADAS (2026 y 2027) -->
+      <section class="seccion-futura" id="sec-aniversario-casados">
+        <h2>🔒 Para el 13 de Febrero de 2026</h2>
+        <div class="candado-box" id="candado-aniversario">
+           <p>Aniversario de Casados. Esta sección espera su momento.</p>
+           <input type="password" id="pass-aniversario" placeholder="Contraseña...">
+           <button onclick="verificarFuturo('aniversario', '7898', 'sec-aniversario-casados')">Desbloquear</button>
+           <p class="error-msg" id="error-aniversario">Clave incorrecta.</p>
+        </div>
+        <div class="contenido-futuro oculto" id="contenido-aniversario">
+           <h3>🌹 Aniversario de Casados</h3>
+           <p>Si has abierto esto, es porque hoy recordamos el día que dijimos "Sí". Aunque la vida cambió, ese "sí" siempre será parte de mi historia. Gracias por los años compartidos.</p>
+        </div>
+      </section>
+
+      <section class="seccion-futura" id="sec-dia-madres">
+        <h2>🔒 Para el 10 de Mayo de 2026</h2>
+        <div class="candado-box" id="candado-madres">
+           <p>Día de las Madres. Un regalo especial.</p>
+           <input type="password" id="pass-madres" placeholder="Contraseña...">
+           <button onclick="verificarFuturo('madres', '1522', 'sec-dia-madres')">Desbloquear</button>
+           <p class="error-msg" id="error-madres">Clave incorrecta.</p>
+        </div>
+        <div class="contenido-futuro oculto" id="contenido-madres">
+           <h3>🌸 Feliz Día de las Madres</h3>
+           <p>Eres la madre que mis hijos merecen. Gracias por tu entrega, por tus desvelos y por amarlos tanto. Hoy te celebro desde aquí.</p>
+        </div>
+      </section>
+
+      <section class="seccion-futura" id="sec-aniversario-novios">
+        <h2>🔒 Para el 7 de Agosto de 2026</h2>
+        <div class="candado-box" id="candado-novios">
+           <p>Aniversario de Novios. Donde todo comenzó.</p>
+           <input type="password" id="pass-novios" placeholder="Contraseña...">
+           <button onclick="verificarFuturo('novios', '6545', 'sec-aniversario-novios')">Desbloquear</button>
+           <p class="error-msg" id="error-novios">Clave incorrecta.</p>
+        </div>
+        <div class="contenido-futuro oculto" id="contenido-novios">
+           <h3>❤️ Aquel 7 de Agosto...</h3>
+           <p>Hoy se cumple otro año de aquel inicio. Recuerdo los nervios, las risas y la ilusión. Gracias por haber sido mi novia, mi esposa y mi compañera.</p>
+        </div>
+      </section>
+
+      <section class="seccion-futura" id="sec-cumpleanos">
+        <h2>🔒 Para el 10 de Diciembre de 2026</h2>
+        <div class="candado-box" id="candado-cumple">
+           <p>¡Tu Cumpleaños! Sorpresa guardada.</p>
+           <input type="password" id="pass-cumple" placeholder="Contraseña...">
+           <button onclick="verificarFuturo('cumple', '1012', 'sec-cumpleanos')">Desbloquear</button>
+           <p class="error-msg" id="error-cumple">Clave incorrecta.</p>
+        </div>
+        <div class="contenido-futuro oculto" id="contenido-cumple">
+           <h3>🎂 ¡Feliz Cumpleaños Osita!</h3>
+           <p>Que la vida te regale un año lleno de luz. Pide un deseo grande hoy, yo estaré empujando desde donde esté para que se cumpla. ¡Felicidades!</p>
+        </div>
+      </section>
+
+      <section class="seccion-futura" id="sec-navidad">
+        <h2>🔒 Para el 25 de Diciembre de 2026</h2>
+        <div class="candado-box" id="candado-navidad">
+           <p>Navidad. Un abrazo a la distancia.</p>
+           <input type="password" id="pass-navidad" placeholder="Contraseña...">
+           <button onclick="verificarFuturo('navidad', '2512', 'sec-navidad')">Desbloquear</button>
+           <p class="error-msg" id="error-navidad">Clave incorrecta.</p>
+        </div>
+        <div class="contenido-futuro oculto" id="contenido-navidad">
+           <h3>🎄 Feliz Navidad</h3>
+           <p>En estas fechas la ausencia pesa, pero el amor consuela. Espero que estés rodeada de calor y familia. Feliz Navidad, te quiero.</p>
+        </div>
+      </section>
+
+      <section class="seccion-futura" id="sec-ano-nuevo">
+        <h2>🔒 Para el 1 de Enero de 2027</h2>
+        <div class="candado-box" id="candado-nuevo">
+           <p>Bienvenido 2027. Último mensaje.</p>
+           <input type="password" id="pass-nuevo" placeholder="Contraseña...">
+           <button onclick="verificarFuturo('nuevo', '4141', 'sec-ano-nuevo')">Desbloquear</button>
+           <p class="error-msg" id="error-nuevo">Clave incorrecta.</p>
+        </div>
+        <div class="contenido-futuro oculto" id="contenido-nuevo">
+           <h3>✨ Feliz 2027</h3>
+           <p>Un nuevo año comienza. Que sea el año donde encuentres toda la paz que buscas. Sigue adelante, siempre adelante. Estaré cuidándote.</p>
+        </div>
+      </section>
+
       <!-- 4. NUEVA SECCIÓN: CIERRE FINAL (GLOBO) -->
       <section class="cierre-final">
         <h2>El último paso...</h2>
@@ -611,7 +705,6 @@ Eso es lo que más pesa… y al mismo tiempo, eso es lo que me sostiene.
       }
     }
 
-    // Permitir dar Enter en el input de contraseña
     document.getElementById('passwordInput').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
         checkPassword();
@@ -635,28 +728,39 @@ Eso es lo que más pesa… y al mismo tiempo, eso es lo que me sostiene.
       }, 300);
     }
 
+    // FUNCION PARA DESBLOQUEAR SECCIONES FUTURAS
+    function verificarFuturo(id, passwordCorrecto, sectionId) {
+      const input = document.getElementById('pass-' + id);
+      const error = document.getElementById('error-' + id);
+      
+      if (input.value === passwordCorrecto) {
+        document.getElementById('candado-' + id).style.display = 'none';
+        document.getElementById('contenido-' + id).style.display = 'block';
+        // Cambiar estilo del borde para indicar éxito
+        document.getElementById(sectionId).style.border = "2px solid #87465b";
+        document.getElementById(sectionId).style.backgroundColor = "#fff";
+      } else {
+        error.style.display = 'block';
+      }
+    }
+
     function soltarGlobo() {
       const globo = document.getElementById('globo');
       const boton = document.querySelector('.cierre-final button');
       const mensaje = document.getElementById('mensaje-final-adios');
       
-      // Ocultar botón
       boton.style.display = 'none';
-      
-      // Mostrar y animar globo
       globo.style.display = 'block';
       setTimeout(() => {
-        globo.style.bottom = '120%'; // Se va hasta arriba de la pantalla
+        globo.style.bottom = '120%';
         globo.style.opacity = '0';
       }, 100);
 
-      // Mostrar mensaje final después de que el globo sube
       setTimeout(() => {
         mensaje.style.display = 'block';
       }, 2500);
     }
 
-    // Video Error Check
     var video = document.getElementById('miVideoFinal');
     var errorMsg = document.getElementById('mensajeErrorVideo');
     if (video) {
