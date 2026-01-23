@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contigo entendí que el amor verdadero no se busca, se construye… y cada día a tu lado es el ladrillo más bonito de nuestra historia.…</title>
+  <title>Contigo entendí que el amor verdadero no se busca, se construye…</title>
   <style>
     body {
       margin: 0;
@@ -18,6 +18,9 @@
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.95);
       border-radius: 15px;
+      /* Añadido un margen superior para separarlo un poco del header si es necesario */
+      margin-top: 20px; 
+      margin-bottom: 20px;
     }
     header {
       background-image: url('https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW1vcnxlbnwwfHwwfHx8MA%3D%3D');
@@ -35,6 +38,7 @@
       padding: 20px;
       border-radius: 10px;
       font-size: 2em;
+      margin: 0 10px; /* Margen lateral para móviles */
     }
     .galeria {
       display: grid;
@@ -48,6 +52,10 @@
     .foto img {
       width: 100%;
       border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .foto img:hover {
+      transform: scale(1.02);
     }
     .foto p {
       margin-top: 5px;
@@ -56,24 +64,30 @@
     }
     .carta-preview {
       background-color: #fff1f6;
-      padding: 20px;
+      padding: 30px; /* Unificado a 30px */
       margin-top: 30px;
-      border-left: 4px solid #cc3366;
+      border-left: 5px solid #cc3366; /* Unificado a 5px */
+      border-radius: 10px; /* Unificado a 10px */
       font-style: italic;
     }
     .leer-mas {
       background-color: #cc3366;
       color: white;
-      padding: 10px;
+      padding: 10px 20px;
       border: none;
       border-radius: 5px;
-      margin-top: 10px;
+      margin-top: 15px;
       cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
+    .leer-mas:hover {
+      background-color: #a02850;
     }
     .oculto {
       display: none;
     }
-    .promesas, .playlist, .frases, .historia, .detalles, .razones, .cartas-emocionales {
+    .promesas, .playlist, .frases, .historia, .detalles, .razones, .cartas-emocionales, .mapa-amor, .audio-mensaje {
       margin-top: 40px;
       padding: 20px;
       background-color: #ffe6f0;
@@ -105,6 +119,10 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .cartas-grid button:hover {
+      background-color: #a02850;
     }
     .carta-emocional {
       background-color: white;
@@ -113,6 +131,7 @@
       border-radius: 8px;
       font-style: italic;
       display: none;
+      margin-top: 15px;
     }
     footer {
       margin-top: 50px;
@@ -134,6 +153,7 @@
       background-repeat: no-repeat;
       background-position: left top;
       opacity: 0.1;
+      z-index: 1;
     }
     .hello-kitty {
       position: fixed;
@@ -141,6 +161,11 @@
       right: 10px;
       width: 80px;
       z-index: 999;
+    }
+    /* Asegura que el contenido esté sobre las flores de fondo */
+    .container, header {
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
@@ -152,59 +177,53 @@
     <h1>Si tú me olvidaste a las 12…<br>yo empecé a amarte de verdad a las 12 con un segundo</h1>
   </header>
 
-<section class="carta-preview" style="background-color: #fff1f6; padding: 30px; margin-top: 30px; border-left: 5px solid #cc3366; border-radius: 10px;">
-  <p style="font-size: 1.1em; font-weight: bold; color: #87465b;">Para Ileana Vega, la mujer que amo y seguiré eligiendo cada día...</p>
-  <p>Hoy quiero hablarte desde lo más profundo de mi corazón, con la verdad por delante...</p>
-  
-  <button class="leer-mas" onclick="document.getElementById('carta-completa').style.display='block'; this.style.display='none'">Leer mi mensaje de despedida</button>
-  
-  <div id="carta-completa" class="oculto" style="margin-top: 20px; line-height: 1.8; color: #4a4a4a;">
-    <p>Han pasado 17 años desde que un “sí” cambió nuestras vidas. Compartimos risas, sueños y la bendición de nuestros hijos: Andree, Samadhi, Eileen y Kai. Tú siempre fuiste el centro de mi mundo.</p>
-
-    <p><strong>Hoy te pido perdón.</strong> Perdón por no haber sido el hombre que soñaste, por haber dañado tu corazón y por el dolor que te causé. Reconozco que mis acciones te hirieron y es algo que me pesa en el alma.</p>
-
-    <p>Quiero que sepas que estoy enfrentando mi batalla más difícil: <strong>estoy luchando contra mi alcoholismo.</strong> Lo hago porque te respeto y porque no quiero que sigas sufriendo por mi culpa. Te mereces la paz que yo no supe darte.</p>
-
-    <p>Si algún día la vida decide que nuestros caminos del amor se vuelvan a cruzar, quiero que sepas que siempre, <em>siempre</em> estaré aquí para ti. Gracias por todo. Que estas palabras y mi voz sean el testimonio de mi arrepentimiento y de mi amor eterno.</p>
-
-    <div style="margin-top: 25px; padding: 15px; background-color: white; border-radius: 8px; text-align: center; border: 1px inset #fce4ec;">
-      <p style="font-style: italic; color: #87465b; font-size: 0.9em; margin-bottom: 10px;">Escucha esto que tengo que decirte:</p>
-      <audio controls style="width: 100%;">
-        <source src="audio/Dijiste que ya no me amas.1,.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio HTML5.
-      </audio>
-    </div>
-    
-    <p style="text-align: right; font-weight: bold; color: #cc3366; margin-top: 20px;">Con todo mi amor y respeto, <br>David ♥</p>
-  </div>
-</section>
-
   <div class="container">
+    
+    <!-- CARTA PRINCIPAL MOVIDA DENTRO DEL CONTENEDOR -->
     <section class="carta-preview">
-      <p>Para Ileana Vega, la mujer que amo y seguiré eligiendo cada día...<br>Hoy quiero hablarte desde lo más profundo de mi corazón...</p>
-      <button class="leer-mas" onclick="document.getElementById('carta-completa').style.display='block'; this.style.display='none'">Leer más</button>
-      <div id="carta-completa" class="oculto">
-        <p>Han pasado 17 años desde que un “sí” cambió nuestras vidas. Compartimos risas, sueños, días simples y momentos difíciles… tú siempre fuiste el centro de mi mundo. Me equivoqué, pero nunca dejé de amarte.<br><br>
-        Este no es un intento desesperado, es un recordatorio. De lo que fuimos. De lo que aún podemos ser. Porque te amo con un amor que no se apaga con la rutina, sino que se fortalece con voluntad.<br><br>
-        No quiero una despedida. Quiero un nuevo comienzo. Estoy aquí, no solo con palabras, sino con acciones. Gracias por todo. Que esta carta sea una semilla de esperanza.</p>
+      <p style="font-size: 1.1em; font-weight: bold; color: #87465b;">Para Ileana Vega, la mujer que amo y seguiré eligiendo cada día...</p>
+      <p>Hoy quiero hablarte desde lo más profundo de mi corazón, con la verdad por delante...</p>
+      
+      <button class="leer-mas" onclick="document.getElementById('carta-completa-principal').style.display='block'; this.style.display='none'">Leer mi mensaje de despedida</button>
+      
+      <div id="carta-completa-principal" class="oculto" style="margin-top: 20px; line-height: 1.8; color: #4a4a4a;">
+        <p>Han pasado 17 años desde que un “sí” cambió nuestras vidas. Compartimos risas, sueños y la bendición de nuestros hijos: Andree, Samadhi, Eileen y Kai. Tú siempre fuiste el centro de mi mundo.</p>
+
+        <p><strong>Hoy te pido perdón.</strong> Perdón por no haber sido el hombre que soñaste, por haber dañado tu corazón y por el dolor que te causé. Reconozco que mis acciones te hirieron y es algo que me pesa en el alma.</p>
+
+        <p>Quiero que sepas que estoy enfrentando mi batalla más difícil: <strong>estoy luchando contra mi alcoholismo.</strong> Lo hago porque te respeto y porque no quiero que sigas sufriendo por mi culpa. Te mereces la paz que yo no supe darte.</p>
+
+        <p>Si algún día la vida decide que nuestros caminos del amor se vuelvan a cruzar, quiero que sepas que siempre, <em>siempre</em> estaré aquí para ti. Gracias por todo. Que estas palabras y mi voz sean el testimonio de mi arrepentimiento y de mi amor eterno.</p>
+
+        <div style="margin-top: 25px; padding: 15px; background-color: white; border-radius: 8px; text-align: center; border: 1px inset #fce4ec;">
+          <p style="font-style: italic; color: #87465b; font-size: 0.9em; margin-bottom: 10px;">Escucha esto que tengo que decirte:</p>
+          <audio controls style="width: 100%;">
+            <!-- Asegúrate de que la ruta al archivo de audio sea correcta -->
+            <source src="audio/Dijiste que ya no me amas.1,.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+          </audio>
+        </div>
+        
+        <p style="text-align: right; font-weight: bold; color: #cc3366; margin-top: 20px;">Con todo mi amor y respeto, <br>David ♥</p>
       </div>
     </section>
+    <!-- FIN CARTA PRINCIPAL -->
 
     <section class="galeria">
-      <div class="foto"><img src="img/1.jpg"><p>Tu sonrisa es mi lugar feliz.</p></div>
-      <div class="foto"><img src="img/2.jpg"><p>Cuando me amabas.</p></div>
-      <div class="foto"><img src="img/3.jpg"><p>Amarte es lo más fácil que he hecho.</p></div>
-      <div class="foto"><img src="img/4.jpeg"><p>Juntos, siempre mejores.</p></div>
-      <div class="foto"><img src="img/5.jpeg"><p>Tu mirada dice más que mil palabras.</p></div>
-      <div class="foto"><img src="img/6.jpeg"><p>Así se ve la felicidad.</p></div>
-      <div class="foto"><img src="img/7.jpeg"><p>Un instante, una eternidad contigo.</p></div>
-      <div class="foto"><img src="img/8.jpeg"><p>Eres la poesía en mi caos.</p></div>
-      <div class="foto"><img src="img/9.jpeg"><p>Te elijo todos los días.</p></div>
-      <div class="foto"><img src="img/10.jpeg"><p>Un recuerdo más que atesoro.</p></div>
-      <div class="foto"><img src="img/11.jpeg"><p>Mi amor, mi todo.</p></div>
-      <div class="foto"><img src="img/10.png"><p>tu y yo.</p></div>
-      <div class="foto"><img src="img/15.jpg"><p>juntos los dos.</p></div>
-      <div class="foto"><img src="img/12.jpeg"><p>Contigo, cualquier lugar es hogar.</p></div>
+      <div class="foto"><img src="img/1.jpg" alt="Foto 1"><p>Tu sonrisa es mi lugar feliz.</p></div>
+      <div class="foto"><img src="img/2.jpg" alt="Foto 2"><p>Cuando me amabas.</p></div>
+      <div class="foto"><img src="img/3.jpg" alt="Foto 3"><p>Amarte es lo más fácil que he hecho.</p></div>
+      <div class="foto"><img src="img/4.jpeg" alt="Foto 4"><p>Juntos, siempre mejores.</p></div>
+      <div class="foto"><img src="img/5.jpeg" alt="Foto 5"><p>Tu mirada dice más que mil palabras.</p></div>
+      <div class="foto"><img src="img/6.jpeg" alt="Foto 6"><p>Así se ve la felicidad.</p></div>
+      <div class="foto"><img src="img/7.jpeg" alt="Foto 7"><p>Un instante, una eternidad contigo.</p></div>
+      <div class="foto"><img src="img/8.jpeg" alt="Foto 8"><p>Eres la poesía en mi caos.</p></div>
+      <div class="foto"><img src="img/9.jpeg" alt="Foto 9"><p>Te elijo todos los días.</p></div>
+      <div class="foto"><img src="img/10.jpeg" alt="Foto 10"><p>Un recuerdo más que atesoro.</p></div>
+      <div class="foto"><img src="img/11.jpeg" alt="Foto 11"><p>Mi amor, mi todo.</p></div>
+      <div class="foto"><img src="img/10.png" alt="Foto 12"><p>tu y yo.</p></div>
+      <div class="foto"><img src="img/15.jpg" alt="Foto 13"><p>juntos los dos.</p></div>
+      <div class="foto"><img src="img/12.jpeg" alt="Foto 14"><p>Contigo, cualquier lugar es hogar.</p></div>
     </section>
 
     <section class="promesas">
@@ -265,20 +284,19 @@
       </ul>
     </section>
 
-    <section class="mapa-amor" style="margin-top: 40px; padding: 20px; background-color: #ffe6f0; border-radius: 10px;">
-  <h2>🗺️ Nuestro Mapa del Amor</h2>
-  <p>Cada lugar en este mapa tiene un pedacito de nuestra historia. Desde donde comenzó todo, hasta cada paso que dimos juntos.</p>
-  <iframe 
-    src="https://www.google.com/maps/d/embed?mid=1o1VtTYINzoRRVejkAtGH1NDekKlAub0&ehbc=2E312F" 
-    width="100%" 
-    height="480" 
-    style="border:0; border-radius: 10px;" 
-    allowfullscreen="" 
-    loading="lazy">
-  </iframe>
-  <p style="margin-top:10px; font-style: italic;">Nuestro mapa de amor… que aún tiene muchos destinos por descubrir ❤️</p>
-</section>
-
+    <section class="mapa-amor">
+      <h2>🗺️ Nuestro Mapa del Amor</h2>
+      <p>Cada lugar en este mapa tiene un pedacito de nuestra historia. Desde donde comenzó todo, hasta cada paso que dimos juntos.</p>
+      <iframe 
+        src="https://www.google.com/maps/d/embed?mid=1o1VtTYINzoRRVejkAtGH1NDekKlAub0&ehbc=2E312F" 
+        width="100%" 
+        height="480" 
+        style="border:0; border-radius: 10px;" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>
+      <p style="margin-top:10px; font-style: italic;">Nuestro mapa de amor… que aún tiene muchos destinos por descubrir ❤️</p>
+    </section>
 
     <section class="historia">
       <h2>Nuestra historia</h2>
@@ -292,14 +310,14 @@
       </ul>
     </section>
     
-<section class="audio-mensaje">
-  <h2>Mi voz para ti</h2>
-  <p>Escucha esto cuando quieras recordarme cuánto te amo:</p>
-  <audio controls>
-    <source src="audio/mi_voz.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
-</section>
+    <section class="audio-mensaje">
+      <h2>Mi voz para ti</h2>
+      <p>Escucha esto cuando quieras recordarme cuánto te amo:</p>
+      <audio controls style="width: 100%;">
+        <source src="audio/mi_voz.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+    </section>
 
     <section class="detalles">
       <h2>Detalles que amo de ti</h2>
@@ -318,7 +336,7 @@
     <section class="playlist">
       <h2>Nuestra música</h2>
       <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-        src="https://www.youtube.com/embed/KNZH-emehxA?autoplay=1&loop=1&playlist=KNZH-emehxA"></iframe>
+        src="https://www.youtube.com/embed/KNZH-emehxA?autoplay=0&loop=1&playlist=KNZH-emehxA"></iframe>
       <p><strong>Playlist:</strong></p>
       <ul>
         <li><a href="https://www.youtube.com/watch?v=V2eocmz9HUY" target="_blank">Canción para ti 1</a></li>
@@ -340,14 +358,11 @@
   <script>
     function mostrarCarta(tipo) {
       document.querySelectorAll('.carta-emocional').forEach(div => div.style.display = 'none');
-      document.getElementById('carta-' + tipo).style.display = 'block';
+      const cartaSeleccionada = document.getElementById('carta-' + tipo);
+      if(cartaSeleccionada) {
+          cartaSeleccionada.style.display = 'block';
+      }
     }
   </script>
 </body>
 </html>
-
-
-
-
-
-
